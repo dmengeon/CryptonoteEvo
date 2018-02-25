@@ -8,3 +8,5 @@
 - failed to handle Notify_Request_Chain
 # All GCC - daemon
 - Error:tcplistener
+# Security and image issue
+I found somehole on codes and json

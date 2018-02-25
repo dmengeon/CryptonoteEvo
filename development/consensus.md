@@ -10,3 +10,5 @@ remove ./[yourcoinname]/blocks.bin and ./[yourcoiname]/blockindexs.bin
 - ./daemon --allow-local-ip --seed-node 127.0.0.1
 ### change repo updates
 - used git ini since we change updates to cryptonoteevo.git
+### json n security issue
+Upgrade v2 soon when enable
