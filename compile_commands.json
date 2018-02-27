@@ -1,0 +1,122 @@
+[
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/c++  -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -std=gnu++14 -o CMakeFiles/tests.dir/src/main_tests.cpp.o -c /root/coins/DirhamCliV2/src/main_tests.cpp",
+  "file": "/root/coins/DirhamCliV2/src/main_tests.cpp"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/c++  -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -std=gnu++14 -o CMakeFiles/tests.dir/tests/crypto/test_crypto.cpp.o -c /root/coins/DirhamCliV2/tests/crypto/test_crypto.cpp",
+  "file": "/root/coins/DirhamCliV2/tests/crypto/test_crypto.cpp"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/c++  -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -std=gnu++14 -o CMakeFiles/tests.dir/tests/hash/test_hash.cpp.o -c /root/coins/DirhamCliV2/tests/hash/test_hash.cpp",
+  "file": "/root/coins/DirhamCliV2/tests/hash/test_hash.cpp"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/c++  -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -std=gnu++14 -o CMakeFiles/tests.dir/tests/json/test_json.cpp.o -c /root/coins/DirhamCliV2/tests/json/test_json.cpp",
+  "file": "/root/coins/DirhamCliV2/tests/json/test_json.cpp"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/c++  -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -std=gnu++14 -o CMakeFiles/walletd.dir/src/main_walletd.cpp.o -c /root/coins/DirhamCliV2/src/main_walletd.cpp",
+  "file": "/root/coins/DirhamCliV2/src/main_walletd.cpp"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/c++  -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -std=gnu++14 -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/crypto.cpp.o -c /root/coins/DirhamCliV2/src/crypto/crypto.cpp",
+  "file": "/root/coins/DirhamCliV2/src/crypto/crypto.cpp"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/c++  -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -std=gnu++14 -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/slow-hash.cpp.o -c /root/coins/DirhamCliV2/src/crypto/slow-hash.cpp",
+  "file": "/root/coins/DirhamCliV2/src/crypto/slow-hash.cpp"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/blake256.c.o   -c /root/coins/DirhamCliV2/src/crypto/blake256.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/blake256.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/chacha.c.o   -c /root/coins/DirhamCliV2/src/crypto/chacha.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/chacha.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/crypto-ops-data.c.o   -c /root/coins/DirhamCliV2/src/crypto/crypto-ops-data.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/crypto-ops-data.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/crypto-ops.c.o   -c /root/coins/DirhamCliV2/src/crypto/crypto-ops.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/crypto-ops.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/groestl.c.o   -c /root/coins/DirhamCliV2/src/crypto/groestl.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/groestl.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/hash-extra-blake.c.o   -c /root/coins/DirhamCliV2/src/crypto/hash-extra-blake.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/hash-extra-blake.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/hash-extra-groestl.c.o   -c /root/coins/DirhamCliV2/src/crypto/hash-extra-groestl.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/hash-extra-groestl.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/hash-extra-jh.c.o   -c /root/coins/DirhamCliV2/src/crypto/hash-extra-jh.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/hash-extra-jh.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/hash-extra-skein.c.o   -c /root/coins/DirhamCliV2/src/crypto/hash-extra-skein.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/hash-extra-skein.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/hash.c.o   -c /root/coins/DirhamCliV2/src/crypto/hash.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/hash.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/jh.c.o   -c /root/coins/DirhamCliV2/src/crypto/jh.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/jh.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/keccak.c.o   -c /root/coins/DirhamCliV2/src/crypto/keccak.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/keccak.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/oaes_lib.c.o   -c /root/coins/DirhamCliV2/src/crypto/oaes_lib.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/oaes_lib.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/random.c.o   -c /root/coins/DirhamCliV2/src/crypto/random.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/random.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/skein.c.o   -c /root/coins/DirhamCliV2/src/crypto/skein.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/skein.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/slow-hash.c.o   -c /root/coins/DirhamCliV2/src/crypto/slow-hash.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/slow-hash.c"
+},
+{
+  "directory": "/root/coins/DirhamCliV2",
+  "command": "/usr/bin/cc -DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1 -I/root/coins/DirhamCliV2/src -I/root/coins/DirhamCliV2/../lmdb/libraries/liblmdb -isystem /usr/local/include   -maes -g -O2 -Wall -Wextra -Wno-strict-aliasing -Werror=return-type -Wno-unused-parameter -Wno-unused-function   -O3 -o CMakeFiles/cryptonote-crypto.dir/src/crypto/tree-hash.c.o   -c /root/coins/DirhamCliV2/src/crypto/tree-hash.c",
+  "file": "/root/coins/DirhamCliV2/src/crypto/tree-hash.c"
+}
+]

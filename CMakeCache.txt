@@ -148,7 +148,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=bytecoin
+CMAKE_PROJECT_NAME:STATIC=cryptonoteevo
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -216,6 +216,18 @@ bytecoin_BINARY_DIR:STATIC=/root/coins/DirhamCliV2
 
 //Value Computed by CMake
 bytecoin_SOURCE_DIR:STATIC=/root/coins/DirhamCliV2
+
+//Dependencies for the target
+cryptonote-core_LIB_DEPENDS:STATIC=general;cryptonote-crypto;
+
+//Dependencies for target
+cryptonote-crypto_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+cryptonoteevo_BINARY_DIR:STATIC=/root/coins/DirhamCliV2
+
+//Value Computed by CMake
+cryptonoteevo_SOURCE_DIR:STATIC=/root/coins/DirhamCliV2
 
 
 ########################
@@ -371,6 +383,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Last used BOOST_ROOT value.
+_BOOST_ROOT_LAST:INTERNAL=/usr/local/include/boost/
 //Components requested for this build tree.
 _Boost_COMPONENTS_SEARCHED:INTERNAL=system
 //Last used Boost_INCLUDE_DIR value.

@@ -14,8 +14,11 @@
 //
 // You should have received a copy of the GNU Lesser General Public License
 // along with Bytecoin.  If not, see <http://www.gnu.org/licenses/>.
+
 #pragma once
 
 #include <string>
 
-void test_json(const std::string & test_vectors_folder);
+namespace cryptonote {
+inline const char * app_version() { return "2.0.0-beta10"; }
+}

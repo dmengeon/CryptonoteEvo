@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.8.0)
 project(cryptonoteevo)
 set(CMAKE_CXX_STANDARD 14)
+set(BOOST_ROOT "/usr/local/include/boost/")
 option(USE_INSTRUMENTATION "Activates using code instrumentation" OFF)
 option(THREAD_SANITIZER "Uses exclusively thread sanitizer" OFF)
 if(WIN32)
