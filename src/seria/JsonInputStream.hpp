@@ -17,8 +17,17 @@
 
 #pragma once
 
+#include <iosfwd>
 #include <string>
+#include <vector>
+#include "common/JsonValue.hpp"
+#include "JsonInputValue.hpp"
 
-namespace cryptonote {
-inline const char * app_version() { return "2.0.0-beta10"; }
+namespace seria {
+
+class JsonInputStream : public JsonInputValue {
+public:
+	JsonInputStream(std::istream &stream);
+};
+
 }

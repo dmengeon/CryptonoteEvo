@@ -17,8 +17,31 @@
 
 #pragma once
 
-#include <string>
+#include "common/MemoryStreams.hpp"
+#include "ISeria.hpp"
+#include "JsonInputValue.hpp"
 
-namespace cryptonote {
-inline const char * app_version() { return "2.0.0-beta10"; }
+namespace seria {
+
+class KVBinaryInputStream : public JsonInputValue {
+public:
+	KVBinaryInputStream(common::IInputStream &strm);
+	using JsonInputValue::seria_v;
+	virtual void seria_v(common::BinaryArray &value) override;
+	virtual void binary(void *value, size_t size) override;
+};
+
+template<typename T>
+void fromBinaryKeyValue(T &v, const common::BinaryArray &buf) {
+	common::MemoryInputStream stream(buf.data(), buf.size());
+	KVBinaryInputStream s(stream);
+	s(v);
+}
+template<typename T>
+void fromBinaryKeyValue(T &v, const std::string &buf) {
+	common::MemoryInputStream stream(buf.data(), buf.size());
+	KVBinaryInputStream s(stream);
+	s(v);
+}
+
 }
