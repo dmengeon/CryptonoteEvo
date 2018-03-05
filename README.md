@@ -46,6 +46,7 @@ Ruby Version 2 is generate for new bytecoin!this will improved code and sync wor
 - Royalties Developer : https://github.com/Vetro7
 - Kohaku Developer
 - Bytecoin Developer[New] : https://github.com/bcndev
+- Docker Builder : https://github.com/homdx
 
 ## Fundrising and Trademark
 - You can copy modify files without change original "cryptonote'
