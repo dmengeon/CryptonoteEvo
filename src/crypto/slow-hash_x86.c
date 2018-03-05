@@ -1,13 +1,15 @@
-// Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2014-2017 XDN developers
-// Copyright (c) 2016-2017 BXC developers
-// Copyright (c) 2017 Royalties developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
+// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #include <stddef.h>
 #include <stdint.h>
 #include <string.h>
+
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+#endif
+
+#if !TARGET_OS_IPHONE // We need "if x86", but no portable way to express that
 
 #include <emmintrin.h>
 #include <wmmintrin.h>
@@ -20,15 +22,9 @@
 
 #include "aesb.h"
 #include "initializer.h"
-#include "Common/int-util.h"
-#include "hash-ops.h"
+#include "int-util.h"
+#include "hash-impl.h"
 #include "oaes_lib.h"
-
-void (*cn_slow_hash_fp)(void *, const void *, size_t, void *);
-
-void cn_slow_hash_f(void * a, const void * b, size_t c, void * d){
-(*cn_slow_hash_fp)(a, b, c, d);
-}
 
 #if defined(__GNUC__)
 #define likely(x) (__builtin_expect(!!(x), 1))
@@ -80,7 +76,7 @@ struct cn_ctx {
 
 static_assert(sizeof(struct cn_ctx) == SLOW_HASH_CONTEXT_SIZE, "Invalid structure size");
 
-static inline void ExpandAESKey256_sub1(__m128i *tmp1, __m128i *tmp2)
+static void ExpandAESKey256_sub1(__m128i *tmp1, __m128i *tmp2)
 {
   __m128i tmp4;
   *tmp2 = _mm_shuffle_epi32(*tmp2, 0xFF);
@@ -93,7 +89,7 @@ static inline void ExpandAESKey256_sub1(__m128i *tmp1, __m128i *tmp2)
   *tmp1 = _mm_xor_si128(*tmp1, *tmp2);
 }
 
-static inline void ExpandAESKey256_sub2(__m128i *tmp1, __m128i *tmp3)
+static void ExpandAESKey256_sub2(__m128i *tmp1, __m128i *tmp3)
 {
   __m128i tmp2, tmp4;
 
@@ -110,7 +106,7 @@ static inline void ExpandAESKey256_sub2(__m128i *tmp1, __m128i *tmp3)
 
 // Special thanks to Intel for helping me
 // with ExpandAESKey256() and its subroutines
-static inline void ExpandAESKey256(uint8_t *keybuf)
+static void ExpandAESKey256(uint8_t *keybuf)
 {
   __m128i tmp1, tmp2, tmp3, *keys;
 
@@ -160,16 +156,16 @@ static inline void ExpandAESKey256(uint8_t *keybuf)
   keys[14] = tmp1;
 }
 
-static void (*const extra_hashes[4])(const void *, size_t, char *) =
+static void (*const extra_hashes[4])(const void *, size_t, unsigned char *) =
 {
     hash_extra_blake, hash_extra_groestl, hash_extra_jh, hash_extra_skein
 };
 
-#include "slow-hash.inl"
+#include "slow-hash_x86.inl"
 #define AESNI
-#include "slow-hash.inl"
+#include "slow-hash_x86.inl"
 
-INITIALIZER(detect_aes) {
+static int cpu_has_aesni(void){
   int ecx;
 #if defined(_MSC_VER)
   int cpuinfo[4];
@@ -179,5 +175,25 @@ INITIALIZER(detect_aes) {
   int a, b, d;
   __cpuid(1, a, b, ecx, d);
 #endif
-  cn_slow_hash_fp = (ecx & (1 << 25)) ? &cn_slow_hash_aesni : &cn_slow_hash_noaesni;
+  return (ecx & (1 << 25)) ? 1 : 0;
 }
+
+static void cn_slow_hash_runtime_aes_check(void * a, const void * b, size_t c, void * d){
+  if( cpu_has_aesni() )
+    cn_slow_hash_aesni(a, b, c, d);
+  else
+    cn_slow_hash_noaesni(a, b, c, d);
+}
+
+static void (*cn_slow_hash_fp)(void *, const void *, size_t, void *) = cn_slow_hash_runtime_aes_check;
+
+void cn_slow_hash(void * a, const void * b, size_t c, void * d){
+  (*cn_slow_hash_fp)(a, b, c, d);
+}
+
+// If INITIALIZER fails to compile on your platform, just comment out 3 lines below
+INITIALIZER(detect_aes) {
+  cn_slow_hash_fp = cpu_has_aesni() ? &cn_slow_hash_aesni : &cn_slow_hash_noaesni;
+}
+
+#endif // !TARGET_OS_IPHONE

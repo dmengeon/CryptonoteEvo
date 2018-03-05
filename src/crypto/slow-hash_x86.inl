@@ -1,9 +1,7 @@
-// Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2014-2017 XDN developers
-// Copyright (c) 2016-2017 BXC developers
-// Copyright (c) 2017 Royalties developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
+// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
+
+// No protection from double-include, this file is included twice in slow-hash_x86.c
 
 static void
 #if defined(AESNI)
@@ -109,17 +107,16 @@ cn_slow_hash_noaesni
       uint64_t hi, lo;
       // hi,lo = 64bit x 64bit multiply of c[0] and b[0]
 
-#if defined(__GNUC__) && defined(__x86_64__)
-      __asm__("mulq %3\n\t"
-        : "=d" (hi),
-        "=a" (lo)
-        : "%a" (c[0]),
-        "rm" (b[0])
-        : "cc" );
-#else
+//#if defined(__GNUC__) && defined(__x86_64__)
+//      __asm__("mulq %3\n\t"
+//        : "=d" (hi),
+//        "=a" (lo)
+//        : "%a" (c[0]),
+//        "rm" (b[0])
+//        : "cc" );
+//#else
       lo = mul128(c[0], b[0], &hi);
-#endif
-
+//#endif
       a[0] += hi;
       a[1] += lo;
     }
