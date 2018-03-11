@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/FndNur1Labs/DirhamCli.svg?branch=master)](https://travis-ci.org/FndNur1Labs/DirhamCli/)
 
-![Settings Window](http://no-game-no-life.wikia.com/wiki/File:Suniaster.jpg)
+![Settings Window](https://vignette.wikia.nocookie.net/no-game-no-life/images/d/d4/Suniaster.jpg/revision/latest/scale-to-width-down/622?cb=20180224145250)
 
 ## Dirham
 From bottom sea to come outside
