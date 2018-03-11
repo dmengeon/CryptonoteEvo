@@ -12,11 +12,12 @@
 #include <string>
 #include <vector>
 #include <boost/utility.hpp>
-#include "../CryptoNoteConfig.h"
-#include "../crypto/hash.h"
-#include "../Logging/LoggerRef.h"
-#include "CryptoNoteBasic.h"
-#include "Difficulty.h"
+#include "../CryptoNoteConfig.hpp"
+#include "../crypto/hash.hpp"
+// #include "../logging/LoggerRef.h"
+#include "../logging/CommonLogger.hpp"
+//#include "CryptoNoteBasic.h"
+#include "Difficulty.hpp"
 
 namespace CryptoNote {
 

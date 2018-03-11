@@ -2,10 +2,10 @@
 // Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #include <thread>
-#include "Core/BlockChainState.hpp"
-#include "Core/Config.hpp"
-#include "Core/Difficulty.hpp"
-#include "Core/TransactionExtra.hpp"
+#include "core/BlockChainState.hpp"
+#include "core/Config.hpp"
+#include "core/Difficulty.hpp"
+#include "core/TransactionExtra.hpp"
 #include "common/CommandLine.hpp"
 #include "crypto/crypto.hpp"
 #include "logging/ConsoleLogger.hpp"

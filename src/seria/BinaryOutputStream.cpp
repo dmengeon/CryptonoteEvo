@@ -27,7 +27,7 @@ using namespace seria;
 
 
 void BinaryOutputStream::beginMap(size_t &size) {
-	writeVarint(stream, size);
+	write_varint(stream, size);
 }
 
 void BinaryOutputStream::nextMapKey(std::string &name) {
@@ -36,35 +36,35 @@ void BinaryOutputStream::nextMapKey(std::string &name) {
 
 void BinaryOutputStream::beginArray(size_t &size, bool fixed_size) {
 	if (!fixed_size)
-		writeVarint(stream, size);
+		write_varint(stream, size);
 }
 
 void BinaryOutputStream::seria_v(uint8_t &value) {
-	writeVarint(stream, value);
+	write_varint(stream, value);
 }
 
 void BinaryOutputStream::seria_v(uint16_t &value) {
-	writeVarint(stream, value);
+	write_varint(stream, value);
 }
 
 void BinaryOutputStream::seria_v(int16_t &value) {
-	writeVarint(stream, static_cast<uint16_t>(value));
+	write_varint(stream, static_cast<uint16_t>(value));
 }
 
 void BinaryOutputStream::seria_v(uint32_t &value) {
-	writeVarint(stream, value);
+	write_varint(stream, value);
 }
 
 void BinaryOutputStream::seria_v(int32_t &value) {
-	writeVarint(stream, static_cast<uint32_t>(value));
+	write_varint(stream, static_cast<uint32_t>(value));
 }
 
 void BinaryOutputStream::seria_v(int64_t &value) {
-	writeVarint(stream, static_cast<uint64_t>(value));
+	write_varint(stream, static_cast<uint64_t>(value));
 }
 
 void BinaryOutputStream::seria_v(uint64_t &value) {
-	writeVarint(stream, value);
+	write_varint(stream, value);
 }
 
 void BinaryOutputStream::seria_v(bool &value) {
@@ -73,11 +73,11 @@ void BinaryOutputStream::seria_v(bool &value) {
 }
 
 void BinaryOutputStream::seria_v(std::string &value) {
-	writeVarint(stream, value.size());
+	write_varint(stream, value.size());
 	stream.write(value.data(), value.size());
 }
 void BinaryOutputStream::seria_v(BinaryArray &value) {
-	writeVarint(stream, value.size());
+	write_varint(stream, value.size());
 	stream.write(value.data(), value.size());
 }
 

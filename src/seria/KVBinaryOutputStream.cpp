@@ -46,13 +46,13 @@ size_t packVarint(IOutputStream &s, uint8_t type_or, size_t pv) {
 }
 
 void writeElementName(IOutputStream &s, common::StringView name) {
-	if (name.getSize() > std::numeric_limits<uint8_t>::max()) {
+	if (name.size() > std::numeric_limits<uint8_t>::max()) {
 		throw std::runtime_error("Element name is too long");
 	}
 
-	uint8_t len = static_cast<uint8_t>(name.getSize());
+	uint8_t len = static_cast<uint8_t>(name.Size());
 	s.write(&len, sizeof(len));
-	s.write(name.getData(), len);
+	s.write(name.data(), len);
 	if (verbose_debug)
 		std::cout << "writeElementName name=" << (std::string) name << std::endl;
 	if (verbose_tokens)
@@ -165,7 +165,7 @@ void KVBinaryOutputStream::writeElementPrefix(uint8_t type) {
 	if (verbose_debug)
 		std::cout << "writeElementPrefix level.state=" << int(level.state) << std::endl;
 	if (level.state == State::Object) {
-		if (!nextKey.isEmpty()) {
+		if (!nextKey.empty()) {
 			writeElementName(s, nextKey);
 			if (type != BIN_KV_SERIALIZE_TYPE_ARRAY)
 				s.write(&type, 1);
