@@ -1,10 +1,5 @@
-// Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2014-2017 XDN developers
-// Copyright (c) 2016-2017 BXC developers
-// Copyright (c) 2017 Royalties developers
-// Copyright (c) 2018 [ ] developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
+// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #include <algorithm>
 #include <cassert>
@@ -12,55 +7,30 @@
 #include <cstdint>
 #include <vector>
 
-#include "Common/int-util.h"
-#include "crypto/hash.h"
-#include "CryptoNoteConfig.h"
-#include "Difficulty.h"
+#include "Difficulty.hpp"
+#include "crypto/hash.hpp"
+#include "crypto/int-util.h"
 
-namespace CryptoNote {
+namespace cryptonote {
 
-  using std::uint64_t;
-  using std::vector;
+static bool cadd(uint64_t a, uint64_t b) { return a + b < a; }
 
-#if defined(__SIZEOF_INT128__)
+static bool cadc(uint64_t a, uint64_t b, bool c) { return a + b < a || (c && a + b == (uint64_t)-1); }
 
-  static inline void mul(uint64_t a, uint64_t b, uint64_t &low, uint64_t &high) {
-    typedef unsigned __int128 uint128_t;
-    uint128_t res = (uint128_t) a * (uint128_t) b;
-    low = (uint64_t) res;
-    high = (uint64_t) (res >> 64);
-  }
-
-#else
-
-  static inline void mul(uint64_t a, uint64_t b, uint64_t &low, uint64_t &high) {
-    low = mul128(a, b, &high);
-  }
-
-#endif
-
-  static inline bool cadd(uint64_t a, uint64_t b) {
-    return a + b < a;
-  }
-
-  static inline bool cadc(uint64_t a, uint64_t b, bool c) {
-    return a + b < a || (c && a + b == (uint64_t) -1);
-  }
-
-  bool check_hash(const Crypto::Hash &hash, difficulty_type difficulty) {
-    uint64_t low, high, top, cur;
-    // First check the highest word, this will most likely fail for a random hash.
-    mul(swap64le(((const uint64_t *) &hash)[3]), difficulty, top, high);
-    if (high != 0) {
-      return false;
-    }
-    mul(swap64le(((const uint64_t *) &hash)[0]), difficulty, low, cur);
-    mul(swap64le(((const uint64_t *) &hash)[1]), difficulty, low, high);
-    bool carry = cadd(cur, low);
-    cur = high;
-    mul(swap64le(((const uint64_t *) &hash)[2]), difficulty, low, high);
-    carry = cadc(cur, low, carry);
-    carry = cadc(high, top, carry);
-    return !carry;
-  }
+bool check_hash(const crypto::Hash &hash, Difficulty difficulty) {
+	uint64_t low, high, top, cur;
+	// First check the highest word, this will most likely fail for a random hash.
+	top = mul128(swap64le(((const uint64_t *)&hash)[3]), difficulty, &high);
+	if (high != 0) {
+		return false;
+	}
+	low        = mul128(swap64le(((const uint64_t *)&hash)[0]), difficulty, &cur);  // TODO - low is not used
+	low        = mul128(swap64le(((const uint64_t *)&hash)[1]), difficulty, &high);
+	bool carry = cadd(cur, low);
+	cur        = high;
+	low        = mul128(swap64le(((const uint64_t *)&hash)[2]), difficulty, &high);
+	carry      = cadc(cur, low, carry);
+	carry      = cadc(high, top, carry);
+	return !carry;
+}
 }
