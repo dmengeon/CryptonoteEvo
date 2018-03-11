@@ -86,7 +86,7 @@ const uint64_t ICO_BLOCK_REWARD	                             = (UINT64_C(1844674
 const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(10) * parameters::COIN);
 const uint64_t REWARD_INCREASE_INTERVAL                      = (UINT64_C(264000));
 
-const char CRYPTONOTE_NAME[] = "bytecoin";
+const char CRYPTONOTE_NAME[] = "cryptonote";
 
 const uint8_t CURRENT_TRANSACTION_VERSION = 1;
 

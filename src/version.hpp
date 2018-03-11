@@ -4,8 +4,8 @@
 #pragma once
 
 // defines are for Windows resource compiler
-#define BYTECOIN_VERSION_WINDOWS_COMMA 2, 0, 0, 280
-#define BYTECOIN_VERSION_WINDOWS_STRING "2.0.0-280-beta"
+#define CRYPTONOTE_VERSION_WINDOWS_COMMA 2, 0, 0, 280
+#define CRYPTONOTE_VERSION_WINDOWS_STRING "2.0.0-280-SUNIASTER"
 
 #ifdef __cplusplus
 
