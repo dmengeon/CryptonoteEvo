@@ -4,8 +4,8 @@
 #pragma once
 
 // defines are for Windows resource compiler
-#define CRYPTONOTE_VERSION_WINDOWS_COMMA 2, 0, 0, 280
-#define CRYPTONOTE_VERSION_WINDOWS_STRING "2.0.0-280-SUNIASTER"
+#define CRYPTONOTE_VERSION_WINDOWS_COMMA 2, 1, 0, 300
+#define CRYPTONOTE_VERSION_WINDOWS_STRING "2.1.0-300-SUNIASTER"
 
 #ifdef __cplusplus
 
