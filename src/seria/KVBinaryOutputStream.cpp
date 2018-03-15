@@ -50,7 +50,7 @@ void writeElementName(IOutputStream &s, common::StringView name) {
 		throw std::runtime_error("Element name is too long");
 	}
 
-	uint8_t len = static_cast<uint8_t>(name.Size());
+	uint8_t len = static_cast<uint8_t>(name.size());
 	s.write(&len, sizeof(len));
 	s.write(name.data(), len);
 	if (verbose_debug)
