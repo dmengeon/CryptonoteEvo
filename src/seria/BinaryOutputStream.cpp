@@ -11,11 +11,11 @@ using namespace common;
 
 using namespace seria;
 
-void BinaryOutputStream::begin_map(size_t &size) { write_varint(stream, size); }
+void BinaryOutputStream::beginMap(size_t &size) { write_varint(stream, size); }
 
-void BinaryOutputStream::next_map_key(std::string &name) { (*this)(name); }
+void BinaryOutputStream::nextMapKey(std::string &name) { (*this)(name); }
 
-void BinaryOutputStream::begin_array(size_t &size, bool fixed_size) {
+void BinaryOutputStream::beginArray(size_t &size, bool fixed_size) {
 	if (!fixed_size)
 		write_varint(stream, size);
 }

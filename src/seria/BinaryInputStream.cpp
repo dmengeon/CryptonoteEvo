@@ -21,14 +21,14 @@ void read_varint_as(IInputStream &s, T &i) {
 }
 }
 
-void BinaryInputStream::begin_array(size_t &size, bool fixed_size) {
+void BinaryInputStream::beginArray(size_t &size, bool fixed_size) {
 	if (!fixed_size)
 		read_varint_as<uint64_t>(stream, size);
 }
 
-void BinaryInputStream::begin_map(size_t &size) { read_varint_as<uint64_t>(stream, size); }
+void BinaryInputStream::beginMap(size_t &size) { read_varint_as<uint64_t>(stream, size); }
 
-void BinaryInputStream::next_map_key(std::string &name) { (*this)(name); }
+void BinaryInputStream::nextMapKey(std::string &name) { (*this)(name); }
 
 void BinaryInputStream::seria_v(uint8_t &value) { read_varint(stream, value); }
 
