@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers..
+// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
 // Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #pragma once
@@ -76,7 +76,7 @@ public:
 	}
 	template<typename T>
 	void load_params(T &v) const {
-		seria::to_json_value(v, params);
+		seria::from_json_value(v, params);
 	}
 
 	void set_method(const std::string &m) { method = m; }
@@ -130,8 +130,7 @@ public:
 	bool get_error(Error &err) const {
 		if (!error)
 			return false;
-//		seria::toJsonValue(err, error.get());
-		seria::toJsonValue(err);
+		seria::from_json_value(err, error.get());
 		return true;
 	}
 
@@ -154,7 +153,7 @@ public:
 
 	template<typename T>
 	void get_result(T &v) const {
-		seria::to_json_value(v, result);
+		seria::from_json_value(v, result);
 	}
 
 private:
