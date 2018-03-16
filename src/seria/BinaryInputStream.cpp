@@ -29,8 +29,8 @@ using namespace seria;
 namespace {
 
 template<typename StorageType, typename T>
-void read_varint(IInputStream &s, T &i) {
-	i = static_cast<T>(read_varint<StorageType>(s));
+void readVarintAs(IInputStream &s, T &i) {
+	i = static_cast<T>(readVarint<StorageType>(s));
 }
 
 }
@@ -38,11 +38,11 @@ void read_varint(IInputStream &s, T &i) {
 
 void BinaryInputStream::beginArray(size_t &size, bool fixed_size) {
 	if (!fixed_size)
-		read_varint<uint64_t>(stream, size);
+		readVarintAs<uint64_t>(stream, size);
 }
 
 void BinaryInputStream::beginMap(size_t &size) {
-	read_varint<uint64_t>(stream, size);
+	readVarintAs<uint64_t>(stream, size);
 }
 
 void BinaryInputStream::nextMapKey(std::string &name) {
@@ -50,31 +50,31 @@ void BinaryInputStream::nextMapKey(std::string &name) {
 }
 
 void BinaryInputStream::seria_v(uint8_t &value) {
-	read_varint(stream, value);
+	readVarint(stream, value);
 }
 
 void BinaryInputStream::seria_v(uint16_t &value) {
-	read_varint(stream, value);
+	readVarint(stream, value);
 }
 
 void BinaryInputStream::seria_v(int16_t &value) {
-	read_varint<uint16_t>(stream, value);
+	readVarintAs<uint16_t>(stream, value);
 }
 
 void BinaryInputStream::seria_v(uint32_t &value) {
-	read_varint(stream, value);
+	readVarint(stream, value);
 }
 
 void BinaryInputStream::seria_v(int32_t &value) {
-	read_varint<uint32_t>(stream, value);
+	readVarintAs<uint32_t>(stream, value);
 }
 
 void BinaryInputStream::seria_v(int64_t &value) {
-	read_varint<uint64_t>(stream, value);
+	readVarintAs<uint64_t>(stream, value);
 }
 
 void BinaryInputStream::seria_v(uint64_t &value) {
-	read_varint(stream, value);
+	readVarint(stream, value);
 }
 
 void BinaryInputStream::seria_v(bool &value) {
@@ -83,13 +83,13 @@ void BinaryInputStream::seria_v(bool &value) {
 
 void BinaryInputStream::seria_v(BinaryArray &value) {
 	uint64_t size;
-	read_varint(stream, size);
+	readVarint(stream, size);
 	common::read(stream, value, size);
 }
 
 void BinaryInputStream::seria_v(std::string &value) {
 	uint64_t size;
-	read_varint(stream, size);
+	readVarint(stream, size);
 
 	common::read(stream, value, size);
 }
