@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "Core/Wallet.hpp"  // for WalletRecord
+#include "core/Wallet.hpp"  // for WalletRecord
 #include "common/Streams.hpp"
 #include "crypto/chacha8.h"
 #include "seria/ISeria.hpp"

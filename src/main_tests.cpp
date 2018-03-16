@@ -80,7 +80,7 @@ void test_blockchain(common::CommandLine &cmd) {
 		}
 		RawBlock rb;
 		api::BlockHeader info;
-		BinaryArray raw_block_template = seria::to_binary(block);
+		BinaryArray raw_block_template = seria::toBinary(block);
 		if (block_chain.add_mined_block(raw_block_template, rb, info) == BroadcastAction::BAN)
 			throw std::runtime_error("add_mined_block failed");
 		std::cout << "ts=" << block.timestamp << " mts=" << info.timestamp_median << " height=" << info.height
@@ -101,7 +101,7 @@ void test_blockchain(common::CommandLine &cmd) {
 		}
 		RawBlock rb;
 		api::BlockHeader info;
-		BinaryArray raw_block_template = seria::to_binary(block);
+		BinaryArray raw_block_template = seria::toBinary(block);
 		if (block_chain.add_mined_block(raw_block_template, rb, info) == BroadcastAction::BAN)
 			throw std::runtime_error("add_mined_block failed");
 		std::cout << "ts=" << block.timestamp << " mts=" << info.timestamp_median << " height=" << info.height

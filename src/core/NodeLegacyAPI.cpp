@@ -2,7 +2,7 @@
 // Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #include <iostream>
-#include "Core/Config.hpp"
+#include "core/Config.hpp"
 #include "CryptoNoteTools.hpp"
 #include "Node.hpp"
 #include "TransactionExtra.hpp"

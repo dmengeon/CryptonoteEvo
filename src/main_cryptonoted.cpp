@@ -2,8 +2,8 @@
 // Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #include <boost/algorithm/string.hpp>
-#include "Core/Config.hpp"
-#include "Core/Node.hpp"
+#include "core/Config.hpp"
+#include "core/Node.hpp"
 #include "common/CommandLine.hpp"
 #include "common/ConsoleTools.hpp"
 #include "logging/LoggerManager.hpp"

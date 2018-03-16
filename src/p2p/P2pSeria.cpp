@@ -17,9 +17,9 @@ namespace seria {
 template<typename T>
 typename std::enable_if<std::is_standard_layout<T>::value>::type serialize_as_binary(
     std::vector<T> &value, common::StringView name, seria::ISeria &serializer) {
-	serializer.object_key(name);
+	serializer.objectKey(name);
 	std::string blob;
-	if (serializer.is_input()) {
+	if (serializer.isInput()) {
 		serializer(blob);
 		value.resize(blob.size() / sizeof(T));
 		if (blob.size()) {
@@ -72,7 +72,7 @@ void ser_members(cryptonote::network_config &v, seria::ISeria &s) {
 
 void ser_members(cryptonote::basic_node_data &v, seria::ISeria &s) {
 	seria_kv("network_id", v.network_id, s);
-	if (s.is_input()) {
+	if (s.isInput()) {
 		v.version = 0;
 	}
 	seria_kv("version", v.version, s);
@@ -82,14 +82,14 @@ void ser_members(cryptonote::basic_node_data &v, seria::ISeria &s) {
 }
 
 void ser_members(cryptonote::CORE_SYNC_DATA &v, seria::ISeria &s) {
-	if (s.is_input()) {
+	if (s.isInput()) {
 		uint32_t on_wire = 0;
-		s.object_key("current_height");
+		s.objectKey("current_height");
 		s(on_wire);
 		v.current_height = on_wire - 1;
 	} else {
 		uint32_t on_wire = v.current_height + 1;
-		s.object_key("current_height");
+		s.objectKey("current_height");
 		s(on_wire);
 	}
 	seria_kv("top_id", v.top_id, s);
@@ -155,7 +155,7 @@ void ser_members(cryptonote::COMMAND_REQUEST_NETWORK_STATE::response &v, seria::
 void ser_members(cryptonote::RawBlockLegacy &v, seria::ISeria &s) {
 	std::string other_block;
 	std::vector<std::string> other_transactions;
-	if (s.is_input()) {
+	if (s.isInput()) {
 		seria::seria_kv("block", other_block, s);
 		seria::seria_kv("txs", other_transactions, s);
 		v.block.reserve(other_block.size());
@@ -182,7 +182,7 @@ void ser_members(cryptonote::NOTIFY_NEW_BLOCK::request &v, seria::ISeria &s) {
 
 void ser_members(cryptonote::NOTIFY_NEW_TRANSACTIONS::request &v, seria::ISeria &s) {
 	std::vector<std::string> transactions;
-	if (s.is_input()) {
+	if (s.isInput()) {
 		seria::seria_kv("txs", transactions, s);
 		v.txs.reserve(transactions.size());
 		std::transform(transactions.begin(), transactions.end(), std::back_inserter(v.txs),

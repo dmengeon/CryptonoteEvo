@@ -2,7 +2,7 @@
 // Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #include "PeerDB.hpp"
-#include "Core/Config.hpp"
+#include "core/Config.hpp"
 
 #include <time.h>
 #include <iostream>
@@ -71,7 +71,7 @@ void PeerDB::read_db(const std::string &prefix, peers_indexed &list) {
 		//        std::cout << db_cur.get_suffix() << std::endl;
 		try {
 			Entry peer{};
-			seria::from_binary(peer, db_cur.get_value_array());
+			seria::fromBinary(peer, db_cur.get_value_array());
 			//            std::cout << common::ip_address_and_port_to_string(peer.adr.ip, peer.adr.port) << std::endl;
 			list.insert(peer);
 		} catch (...) {
@@ -83,7 +83,7 @@ void PeerDB::read_db(const std::string &prefix, peers_indexed &list) {
 
 void PeerDB::update_db(const std::string &prefix, const Entry &entry) {
 	auto key = prefix + std::to_string(entry.adr.ip) + ":" + std::to_string(entry.adr.port);
-	db.put(key, seria::to_binary(entry), false);
+	db.put(key, seria::toBinary(entry), false);
 }
 
 void PeerDB::del_db(const std::string &prefix, const NetworkAddress &addr) {
