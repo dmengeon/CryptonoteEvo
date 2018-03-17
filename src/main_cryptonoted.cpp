@@ -14,7 +14,7 @@
 using namespace cryptonote;
 
 static const char USAGE[] =
-   R"(cryptonoted.
+    R"(cryptonoted.
 
 Usage:
   cryptonoted [options]
@@ -34,7 +34,7 @@ Options:
   --priority-node-address=<ip:port>  Specify list (one or more) of nodes to connect to and attempt to keep the connection open.
   --exclusive-node-address=<ip:port> Specify list (one or more) of nodes to connect to only. All other nodes including seed nodes will be ignored.
 )"
-#if CRYPTONOTE_SSL
+#if BYTECOIN_SSL
     R"(
   --ssl-certificate-pem-file=<file>  Full path to file containing both server SSL certificate and private key in PEM format
   --ssl-certificate-password=<pass>  DEPRECATED. Will read password from stdin if not specified
@@ -100,3 +100,4 @@ int main(int argc, const char *argv[]) try {
 	std::cout << "Exception in main() - " << ex.what() << std::endl;
 	throw;
 }
+

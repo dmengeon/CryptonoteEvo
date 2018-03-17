@@ -14,7 +14,7 @@
 // Common data structures used in all api calls.
 // Basic data types are serialized to Json as follows
 // bool - Bool
-// Amount, SignedAmount, Height, Timestamp, UnlockMoment, Difficulty, (u)int - Number. cryptonote does not use fractional
+// Amount, SignedAmount, Height, Timestamp, UnlockMoment, Difficulty, (u)int - Number. bytecoin does not use fractional
 // numbers, but uses numbers as large as 2^64-1 for amounts, which is larger than 2^53 exactly representable in double
 // or JavaScript Number
 //     amounts large than ~91 million BCN cannot be represented exactly in JavaScript and other platforms using IEEE
@@ -133,10 +133,10 @@ namespace cryptonote {
 namespace api {
 
 enum return_code {
-	CRYPTONOTED_DATABASE_ERROR    = 101,  // We hope we are out of disk space, otherwise blockchain DB is corrupted.
-	CRYPTONOTED_ALREADY_RUNNING   = 102,
+	BYTECOIND_DATABASE_ERROR    = 101,  // We hope we are out of disk space, otherwise blockchain DB is corrupted.
+	BYTECOIND_ALREADY_RUNNING   = 102,
 	WALLETD_BIND_PORT_IN_USE    = 103,
-	CRYPTONOTED_BIND_PORT_IN_USE  = 104,
+	BYTECOIND_BIND_PORT_IN_USE  = 104,
 	WALLET_FILE_READ_ERROR      = 205,
 	WALLET_FILE_UNKNOWN_VERSION = 206,
 	WALLET_FILE_DECRYPT_ERROR   = 207,
@@ -497,48 +497,48 @@ namespace seria {
 
 class ISeria;
 
-void serMembers(cryptonote::api::EmptyStruct &v, ISeria &s);
-void serMembers(cryptonote::api::Output &v, ISeria &s);
-void serMembers(cryptonote::api::BlockHeader &v, ISeria &s);
-void serMembers(cryptonote::api::Transfer &v, ISeria &s);
-void serMembers(cryptonote::api::Transaction &v, ISeria &s);
-void serMembers(cryptonote::api::Block &v, ISeria &s);
-void serMembers(cryptonote::api::Balance &v, ISeria &s);
+void ser_members(cryptonote::api::EmptyStruct &v, ISeria &s);
+void ser_members(cryptonote::api::Output &v, ISeria &s);
+void ser_members(cryptonote::api::BlockHeader &v, ISeria &s);
+void ser_members(cryptonote::api::Transfer &v, ISeria &s);
+void ser_members(cryptonote::api::Transaction &v, ISeria &s);
+void ser_members(cryptonote::api::Block &v, ISeria &s);
+void ser_members(cryptonote::api::Balance &v, ISeria &s);
 
-void serMembers(cryptonote::api::walletd::GetAddresses::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetViewKeyPair::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::CreateAddresses::Request &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::CreateAddresses::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetBalance::Request &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetBalance::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetUnspents::Request &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetUnspents::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetTransfers::Request &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetTransfers::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::CreateTransaction::Request &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::CreateTransaction::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::CreateSendProof::Request &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::CreateSendProof::Response &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetTransaction::Request &v, ISeria &s);
-void serMembers(cryptonote::api::walletd::GetTransaction::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetAddresses::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetViewKeyPair::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::CreateAddresses::Request &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::CreateAddresses::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetBalance::Request &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetBalance::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetUnspents::Request &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetUnspents::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetTransfers::Request &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetTransfers::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::CreateTransaction::Request &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::CreateTransaction::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::CreateSendProof::Request &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::CreateSendProof::Response &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetTransaction::Request &v, ISeria &s);
+void ser_members(cryptonote::api::walletd::GetTransaction::Response &v, ISeria &s);
 
-void serMembers(cryptonote::api::cryptonoted::GetStatus::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::GetStatus::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SyncBlocks::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SyncBlocks::SyncBlock &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SyncBlocks::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SyncMemPool::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SyncMemPool::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::GetRandomOutputs::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::GetRandomOutputs::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SendTransaction::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SendTransaction::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::CheckSendProof::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::CheckSendProof::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::GetBlockTemplate::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::GetBlockTemplate::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::GetCurrencyId::Response &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SubmitBlock::Request &v, ISeria &s);
-void serMembers(cryptonote::api::cryptonoted::SubmitBlockLegacy::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetStatus::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetStatus::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SyncBlocks::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SyncBlocks::SyncBlock &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SyncBlocks::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SyncMemPool::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SyncMemPool::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetRandomOutputs::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetRandomOutputs::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SendTransaction::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SendTransaction::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::CheckSendProof::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::CheckSendProof::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetBlockTemplate::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetBlockTemplate::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetCurrencyId::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SubmitBlock::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SubmitBlockLegacy::Response &v, ISeria &s);
 
 }  // namespace seria
