@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/FndNur1Labs/DirhamCli.svg?branch=master)](https://travis-ci.org/FndNur1Labs/DirhamCli/)
 
-![Settings Window](http://decaf.kouhi.me/lovelive/images/4/46/Ruby_smile_r918_t.jpg)
+![Settings Window](https://vignette.wikia.nocookie.net/no-game-no-life/images/d/d4/Suniaster.jpg/revision/latest/scale-to-width-down/622?cb=20180224145250)
 
 ## Dirham
 From bottom sea to come outside
@@ -29,6 +29,9 @@ Ruby version is release for more expert and easy way with XDN team behind crypto
 ## Ruby V2
 Ruby Version 2 is generate for new bytecoin!this will improved code and sync work~
 
+## The Suniaster - V2.1
+The Suniaster Version is merge both technology From Bytecoin x Monero with docker and stable on Travis[Homd n Shiro]. This Version Disable Ico,PoS and Token. Since still testing. Replacing Ruby.
+
 ### Development tree
 - Develop : this for who contribute the works. anyone can do
 - Develop-V2 : this for Ruby 2 Focused from bytecoin Fork[new one]
@@ -46,6 +49,7 @@ Ruby Version 2 is generate for new bytecoin!this will improved code and sync wor
 - Royalties Developer : https://github.com/Vetro7
 - Kohaku Developer
 - Bytecoin Developer[New] : https://github.com/bcndev
+- Docker Builder : https://github.com/homdx
 
 ## Fundrising and Trademark
 - You can copy modify files without change original "cryptonote'

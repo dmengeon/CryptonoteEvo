@@ -1,18 +1,19 @@
-// Copyright (c) 2011-2017 The Cryptonote developers
-// Copyright (c) 2014-2017 XDN developers
-// Copyright (c) 2016-2017 BXC developers
-// Copyright (c) 2017 Royalties developers
-// Distributed under the MIT/X11 software license, see the accompanying
-// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
+// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
-#include <alloca.h>
 #include <assert.h>
 #include <stddef.h>
 #include <string.h>
+#ifdef _WIN32
+#include <malloc.h>
+#define alloca _alloca
+#else
+#include <alloca.h>
+#endif
 
 #include "hash-ops.h"
 
-void tree_hash(const char (*hashes)[HASH_SIZE], size_t count, char *root_hash) {
+void tree_hash(const unsigned char (*hashes)[HASH_SIZE], size_t count, unsigned char *root_hash) {
   assert(count > 0);
   if (count == 1) {
     memcpy(root_hash, hashes, HASH_SIZE);
@@ -21,7 +22,7 @@ void tree_hash(const char (*hashes)[HASH_SIZE], size_t count, char *root_hash) {
   } else {
     size_t i, j;
     size_t cnt = count - 1;
-    char (*ints)[HASH_SIZE];
+    unsigned char (*ints)[HASH_SIZE];
     for (i = 1; i < 8 * sizeof(size_t); i <<= 1) {
       cnt |= cnt >> i;
     }
@@ -55,11 +56,11 @@ size_t tree_depth(size_t count) {
   return depth;
 }
 
-void tree_branch(const char (*hashes)[HASH_SIZE], size_t count, char (*branch)[HASH_SIZE]) {
+void tree_branch(const unsigned char (*hashes)[HASH_SIZE], size_t count, unsigned char (*branch)[HASH_SIZE]) {
   size_t i, j;
   size_t cnt = 1;
   size_t depth = 0;
-  char (*ints)[HASH_SIZE];
+  unsigned char (*ints)[HASH_SIZE];
   assert(count > 0);
   for (i = sizeof(size_t) << 2; i > 0; i >>= 1) {
     if (cnt << i <= count) {
@@ -86,13 +87,13 @@ void tree_branch(const char (*hashes)[HASH_SIZE], size_t count, char (*branch)[H
   }
 }
 
-void tree_hash_from_branch(const char (*branch)[HASH_SIZE], size_t depth, const char *leaf, const void *path, char *root_hash) {
+void tree_hash_from_branch(const unsigned char (*branch)[HASH_SIZE], size_t depth, const unsigned char *leaf, const void *path, unsigned char *root_hash) {
   if (depth == 0) {
     memcpy(root_hash, leaf, HASH_SIZE);
   } else {
-    char buffer[2][HASH_SIZE];
+    unsigned char buffer[2][HASH_SIZE];
     int from_leaf = 1;
-    char *leaf_path, *branch_path;
+    unsigned char *leaf_path, *branch_path;
     while (depth > 0) {
       --depth;
       if (path && (((const char *) path)[depth >> 3] & (1 << (depth & 7))) != 0) {
