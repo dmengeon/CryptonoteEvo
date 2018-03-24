@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
+// Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
 #include "CryptoNoteProtocolDefinitions.hpp"
 #include "P2pProtocolDefinitions.hpp"
@@ -17,9 +17,9 @@ namespace seria {
 template<typename T>
 typename std::enable_if<std::is_standard_layout<T>::value>::type serialize_as_binary(
     std::vector<T> &value, common::StringView name, seria::ISeria &serializer) {
-	serializer.objectKey(name);
+	serializer.object_key(name);
 	std::string blob;
-	if (serializer.isInput()) {
+	if (serializer.is_input()) {
 		serializer(blob);
 		value.resize(blob.size() / sizeof(T));
 		if (blob.size()) {
@@ -72,7 +72,7 @@ void ser_members(cryptonote::network_config &v, seria::ISeria &s) {
 
 void ser_members(cryptonote::basic_node_data &v, seria::ISeria &s) {
 	seria_kv("network_id", v.network_id, s);
-	if (s.isInput()) {
+	if (s.is_input()) {
 		v.version = 0;
 	}
 	seria_kv("version", v.version, s);
@@ -82,14 +82,14 @@ void ser_members(cryptonote::basic_node_data &v, seria::ISeria &s) {
 }
 
 void ser_members(cryptonote::CORE_SYNC_DATA &v, seria::ISeria &s) {
-	if (s.isInput()) {
+	if (s.is_input()) {
 		uint32_t on_wire = 0;
-		s.objectKey("current_height");
+		s.object_key("current_height");
 		s(on_wire);
 		v.current_height = on_wire - 1;
 	} else {
 		uint32_t on_wire = v.current_height + 1;
-		s.objectKey("current_height");
+		s.object_key("current_height");
 		s(on_wire);
 	}
 	seria_kv("top_id", v.top_id, s);
@@ -123,7 +123,7 @@ void ser_members(cryptonote::COMMAND_PING::response &v, seria::ISeria &s) {
 	seria_kv("peer_id", v.peer_id, s);
 }
 
-#ifdef ALLOW_DEBUG_COMMANDS
+#if cryptonote_ALLOW_DEBUG_COMMANDS
 void ser_members(cryptonote::proof_of_trust &v, seria::ISeria &s) {
 	seria_kv("peer_id", v.peer_id, s);
 	seria_kv("time", v.time, s);
@@ -155,7 +155,7 @@ void ser_members(cryptonote::COMMAND_REQUEST_NETWORK_STATE::response &v, seria::
 void ser_members(cryptonote::RawBlockLegacy &v, seria::ISeria &s) {
 	std::string other_block;
 	std::vector<std::string> other_transactions;
-	if (s.isInput()) {
+	if (s.is_input()) {
 		seria::seria_kv("block", other_block, s);
 		seria::seria_kv("txs", other_transactions, s);
 		v.block.reserve(other_block.size());
@@ -182,7 +182,7 @@ void ser_members(cryptonote::NOTIFY_NEW_BLOCK::request &v, seria::ISeria &s) {
 
 void ser_members(cryptonote::NOTIFY_NEW_TRANSACTIONS::request &v, seria::ISeria &s) {
 	std::vector<std::string> transactions;
-	if (s.isInput()) {
+	if (s.is_input()) {
 		seria::seria_kv("txs", transactions, s);
 		v.txs.reserve(transactions.size());
 		std::transform(transactions.begin(), transactions.end(), std::back_inserter(v.txs),

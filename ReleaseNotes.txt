@@ -60,3 +60,20 @@ Release notes 0.1.1 -Ruby Version
 - cryptotoken Fixed
 - cleanup uneccesary files
 - removed cryptonote-token branch[useless-already merge]
+
+Release notes 3.0.0 -Unknown
+
+- hard fork code new bcn n xdn old sync
+- hard fork monero
+- added wiki
+
+Release notes 3.0.1 -The Suniaster
+
+- fixed daemon bug
+- updates wiki
+
+Release notes 3.0.2 -The Suniaster
+
+- fixed bug chain
+- fixed ssl config
+- updates wiki

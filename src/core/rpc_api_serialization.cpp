@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
+// Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
 #include "CryptoNoteTools.hpp"
 #include "TransactionExtra.hpp"
@@ -261,6 +261,8 @@ void ser_members(api::BlockHeader &v, ISeria &s) {
 		seria_kv("prev_hash", v.previous_block_hash, s);
 	seria_kv("nonce", v.nonce, s);
 
+	// 	s(depth, "depth"); - Used by legacy methods, hope no one uses it
+	//  s(orphan_status, "orphan_status"); - Used by legacy methods, hope no one uses it
 	seria_kv("height", v.height, s);
 	seria_kv("hash", v.hash, s);
 	seria_kv("reward", v.reward, s);
@@ -388,6 +390,7 @@ void ser_members(api::cryptonoted::GetStatus::Request &v, ISeria &s) {
 	seria_kv("transaction_pool_version", v.transaction_pool_version, s);
 	seria_kv("outgoing_peer_count", v.outgoing_peer_count, s);
 	seria_kv("incoming_peer_count", v.incoming_peer_count, s);
+	seria_kv("lower_level_error", v.lower_level_error, s);
 }
 void ser_members(api::cryptonoted::GetStatus::Response &v, ISeria &s) {
 	ser_members(static_cast<api::cryptonoted::GetStatus::Request &>(v), s);
@@ -473,10 +476,24 @@ void ser_members(cryptonote::api::cryptonoted::GetBlockTemplate::Response &v, IS
 void ser_members(cryptonote::api::cryptonoted::GetCurrencyId::Response &v, ISeria &s) {
 	seria_kv("currency_id_blob", v.currency_id_blob, s);
 }
-void ser_members(cryptonote::api::cryptonoted::SubmitBlockLegacy::Response &v, ISeria &s) {
-	seria_kv("status", v.status, s);
-}
+void ser_members(cryptonote::api::cryptonoted::SubmitBlock::Response &v, ISeria &s) { seria_kv("status", v.status, s); }
 void ser_members(cryptonote::api::cryptonoted::SubmitBlock::Request &v, ISeria &s) {
 	seria_kv("blocktemplate_blob", v.blocktemplate_blob, s);
 }
+void ser_members(cryptonote::api::cryptonoted::BlockHeaderLegacy &v, ISeria &s) {
+	ser_members(static_cast<cryptonote::api::BlockHeader &>(v), s);
+	seria_kv("depth", v.depth, s);
+	seria_kv("orphan_status", v.orphan_status, s);
+}
+void ser_members(cryptonote::api::cryptonoted::GetLastBlockHeaderLegacy::Response &v, ISeria &s) {
+	seria_kv("status", v.status, s);
+	seria_kv("block_header", v.block_header, s);
+}
+void ser_members(cryptonote::api::cryptonoted::GetBlockHeaderByHashLegacy::Request &v, ISeria &s) {
+	seria_kv("hash", v.hash, s);
+}
+void ser_members(cryptonote::api::cryptonoted::GetBlockHeaderByHeightLegacy::Request &v, ISeria &s) {
+	seria_kv("height", v.height, s);
+}
+
 }  // namespace seria

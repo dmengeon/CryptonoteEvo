@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
+// Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
 #pragma once
 
@@ -14,7 +14,7 @@
 // Common data structures used in all api calls.
 // Basic data types are serialized to Json as follows
 // bool - Bool
-// Amount, SignedAmount, Height, Timestamp, UnlockMoment, Difficulty, (u)int - Number. bytecoin does not use fractional
+// Amount, SignedAmount, Height, Timestamp, UnlockMoment, Difficulty, (u)int - Number. cryptonote does not use fractional
 // numbers, but uses numbers as large as 2^64-1 for amounts, which is larger than 2^53 exactly representable in double
 // or JavaScript Number
 //     amounts large than ~91 million BCN cannot be represented exactly in JavaScript and other platforms using IEEE
@@ -133,10 +133,10 @@ namespace cryptonote {
 namespace api {
 
 enum return_code {
-	BYTECOIND_DATABASE_ERROR    = 101,  // We hope we are out of disk space, otherwise blockchain DB is corrupted.
-	BYTECOIND_ALREADY_RUNNING   = 102,
+	CRYPTONOTED_DATABASE_ERROR    = 101,  // We hope we are out of disk space, otherwise blockchain DB is corrupted.
+	CRYPTONOTED_ALREADY_RUNNING   = 102,
 	WALLETD_BIND_PORT_IN_USE    = 103,
-	BYTECOIND_BIND_PORT_IN_USE  = 104,
+	CRYPTONOTED_BIND_PORT_IN_USE  = 104,
 	WALLET_FILE_READ_ERROR      = 205,
 	WALLET_FILE_UNKNOWN_VERSION = 206,
 	WALLET_FILE_DECRYPT_ERROR   = 207,
@@ -164,9 +164,11 @@ struct GetStatus {
 		uint32_t incoming_peer_count = 0;
 		// You get longpoll (no immediate reply) until any parameter changes.
 		// You can just send previous response as a next request if you are interested in all changes visible to API.
+		std::string
+		    lower_level_error;  // Problems on lower levels (like cryptonoted errors in walletd status). Empty - no errors
 
 		bool operator==(const Request &other) const {
-			return top_block_hash == other.top_block_hash &&
+			return lower_level_error == other.lower_level_error && top_block_hash == other.top_block_hash &&
 			       transaction_pool_version == other.transaction_pool_version &&
 			       outgoing_peer_count == other.outgoing_peer_count && incoming_peer_count == other.incoming_peer_count;
 		}
@@ -293,9 +295,9 @@ struct CreateTransaction {
 		SignedAmount fee_per_byte = 0;   // Fee of created transaction will be close to the size of tx * fee_per_byte.
 		                                 // You can check it in response.transaction.fee before sending, if you wish
 		std::string optimization;  // Wallet outputs optimization (fusion). Leave empty to use normal optimization, good
-		                           // for wallets with balanced sends to recieves count. You can save on a few percent
+		                           // for wallets with balanced sends to receives count. You can save on a few percent
 		                           // of fee (on average) by specifying "minimal" for wallet receiving far less
-		                           // transactions than sending. You should use "aggressive" for wallet recieving far
+		                           // transactions than sending. You should use "aggressive" for wallet receiving far
 		                           // more transactions than sending, this option will use every opportunity to reduce
 		                           // number of outputs. For better optimization use as little anonymity as possible. If
 		                           // anonymity is set to 0, wallet will prioritize optimizing out dust and crazy (large
@@ -474,20 +476,50 @@ struct GetCurrencyId {
 	};
 };
 
-struct SubmitBlockLegacy {
-	static std::string method() { return "submitblock"; }  // This name is used by old miners
-	typedef std::vector<std::string> Request;
-	struct Response {
-		std::string status;
-	};
-};
-
 struct SubmitBlock {
 	static std::string method() { return "submit_block"; }
 	struct Request {
 		BinaryArray blocktemplate_blob;
 	};
-	typedef SubmitBlockLegacy::Response Response;
+	struct Response {
+		std::string status;
+	};
+};
+
+// Legacy methods
+struct SubmitBlockLegacy {
+	static std::string method() { return "submitblock"; }  // This name is used by old miners
+	typedef std::vector<std::string> Request;
+	typedef SubmitBlock::Response Response;
+};
+
+struct BlockHeaderLegacy : public api::BlockHeader {
+	bool orphan_status  = false;
+	HeightOrDepth depth = 0;
+};
+struct GetLastBlockHeaderLegacy {  // Use GetStatus instead
+	static std::string method() { return "getlastblockheader"; }
+	typedef EmptyStruct Request;
+	struct Response {
+		std::string status;
+		BlockHeaderLegacy block_header;
+	};
+};
+
+struct GetBlockHeaderByHashLegacy {
+	static std::string method() { return "getblockheaderbyhash"; }
+	struct Request {
+		Hash hash;
+	};
+	typedef GetLastBlockHeaderLegacy::Response Response;
+};
+
+struct GetBlockHeaderByHeightLegacy {
+	static std::string method() { return "getblockheaderbyheight"; }
+	struct Request {
+		Height height = 0;  // Beware, in this call height starts from 1, not 0, so height=1 returns genesis
+	};
+	typedef GetLastBlockHeaderLegacy::Response Response;
 };
 }
 }
@@ -539,6 +571,10 @@ void ser_members(cryptonote::api::cryptonoted::GetBlockTemplate::Request &v, ISe
 void ser_members(cryptonote::api::cryptonoted::GetBlockTemplate::Response &v, ISeria &s);
 void ser_members(cryptonote::api::cryptonoted::GetCurrencyId::Response &v, ISeria &s);
 void ser_members(cryptonote::api::cryptonoted::SubmitBlock::Request &v, ISeria &s);
-void ser_members(cryptonote::api::cryptonoted::SubmitBlockLegacy::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::SubmitBlock::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::BlockHeaderLegacy &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetLastBlockHeaderLegacy::Response &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetBlockHeaderByHashLegacy::Request &v, ISeria &s);
+void ser_members(cryptonote::api::cryptonoted::GetBlockHeaderByHeightLegacy::Request &v, ISeria &s);
 
 }  // namespace seria

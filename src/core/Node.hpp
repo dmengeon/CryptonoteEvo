@@ -1,5 +1,5 @@
 // Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
+// Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
 #pragma once
 
@@ -64,6 +64,13 @@ public:
 	    api::cryptonoted::SubmitBlock::Request &&, api::cryptonoted::SubmitBlock::Response &);
 	bool on_submitblock_legacy(http::Client *, http::RequestData &&, json_rpc::Request &&,
 	    api::cryptonoted::SubmitBlockLegacy::Request &&, api::cryptonoted::SubmitBlockLegacy::Response &);
+	bool on_get_last_block_header(http::Client *, http::RequestData &&, json_rpc::Request &&,
+	    api::cryptonoted::GetLastBlockHeaderLegacy::Request &&, api::cryptonoted::GetLastBlockHeaderLegacy::Response &);
+	bool on_get_block_header_by_hash(http::Client *, http::RequestData &&, json_rpc::Request &&,
+	    api::cryptonoted::GetBlockHeaderByHashLegacy::Request &&, api::cryptonoted::GetBlockHeaderByHashLegacy::Response &);
+	bool on_get_block_header_by_height(http::Client *, http::RequestData &&, json_rpc::Request &&,
+	    api::cryptonoted::GetBlockHeaderByHeightLegacy::Request &&,
+	    api::cryptonoted::GetBlockHeaderByHeightLegacy::Response &);
 
 	bool process_json_rpc_request(http::Client *, http::RequestData &&, http::ResponseData &);
 
@@ -100,7 +107,7 @@ protected:
 	uint64_t m_last_stat_request_time = 0;
 	// Prevent replay attacks by only trusting requests with timestamp > than previous request
 
-	class P2PClientCyptonote : public P2PClientBasic {
+	class P2PClientCryptonote : public P2PClientBasic {
 		Node *const m_node;
 
 	protected:
@@ -122,17 +129,17 @@ protected:
 		virtual void on_msg_timed_sync(COMMAND_TIMED_SYNC::response &&) override;
 		virtual void on_msg_notify_new_block(NOTIFY_NEW_BLOCK::request &&) override;
 		virtual void on_msg_notify_new_transactions(NOTIFY_NEW_TRANSACTIONS::request &&) override;
-#ifdef ALLOW_DEBUG_COMMANDS
+#if cryptonote_ALLOW_DEBUG_COMMANDS
 		virtual void on_msg_network_state(COMMAND_REQUEST_NETWORK_STATE::request &&) override;
 		virtual void on_msg_stat_info(COMMAND_REQUEST_STAT_INFO::request &&) override;
 #endif
 	public:
-		explicit P2PClientCyptonote(Node *node, bool incoming, D_handler d_handler)
+		explicit P2PClientCryptonote(Node *node, bool incoming, D_handler d_handler)
 		    : P2PClientBasic(node->m_config, node->m_p2p.get_unique_number(), incoming, d_handler), m_node(node) {}
 		Node *get_node() const { return m_node; }
 	};
 	std::unique_ptr<P2PClient> client_factory(bool incoming, P2PClient::D_handler d_handler) {
-		return std::make_unique<P2PClientCyptonote>(this, incoming, d_handler);
+		return std::make_unique<P2PClientCryptonote>(this, incoming, d_handler);
 	}
 
 	class DownloaderV1 {  // sync&download from legacy v1 clients
@@ -140,8 +147,8 @@ protected:
 		BlockChainState &m_block_chain;
 
 		size_t m_ask_blocks_count;
-		std::set<P2PClientCyptonote *> m_good_clients;
-		P2PClientCyptonote *m_sync_client = nullptr;
+		std::set<P2PClientCryptonote *> m_good_clients;
+		P2PClientCryptonote *m_sync_client = nullptr;
 		platform::Timer m_sync_timer;  // If sync_client does not respond for long, disconnect it
 		bool m_sync_sent = false;
 
@@ -157,11 +164,11 @@ protected:
 		void advance_download(Hash last_downloaded_block);
 
 		uint32_t get_known_block_count(uint32_t my) const;
-		void on_connect(P2PClientCyptonote *);
-		void on_disconnect(P2PClientCyptonote *);
-		const std::set<P2PClientCyptonote *> &get_good_clients() const { return m_good_clients; }
-		void on_msg_notify_request_chain(P2PClientCyptonote *, const NOTIFY_RESPONSE_CHAIN_ENTRY::request &);
-		void on_msg_notify_request_objects(P2PClientCyptonote *, const NOTIFY_RESPONSE_GET_OBJECTS::request &);
+		void on_connect(P2PClientCryptonote *);
+		void on_disconnect(P2PClientCryptonote *);
+		const std::set<P2PClientCryptonote *> &get_good_clients() const { return m_good_clients; }
+		void on_msg_notify_request_chain(P2PClientCryptonote *, const NOTIFY_RESPONSE_CHAIN_ENTRY::request &);
+		void on_msg_notify_request_objects(P2PClientCryptonote *, const NOTIFY_RESPONSE_GET_OBJECTS::request &);
 		void on_msg_timed_sync(const CORE_SYNC_DATA &payload_data);
 	};
 
@@ -169,17 +176,17 @@ protected:
 		Node *const m_node;
 		BlockChainState &m_block_chain;
 
-		std::map<P2PClientCyptonote *, size_t> m_good_clients;  // -> # of downloading blocks
+		std::map<P2PClientCryptonote *, size_t> m_good_clients;  // -> # of downloading blocks
 		size_t total_downloading_blocks = 0;
-		std::list<P2PClientCyptonote *> m_who_downloaded_block;
-		P2PClientCyptonote *m_chain_client = nullptr;
+		std::list<P2PClientCryptonote *> m_who_downloaded_block;
+		P2PClientCryptonote *m_chain_client = nullptr;
 		platform::Timer m_chain_timer;  // If m_chain_client does not respond for long, disconnect it
 
 		struct DownloadCell {
 			Hash bid;
 			Height expected_height = 0;
 			NetworkAddress bid_source;  // for banning culprit in case of a problem
-			P2PClientCyptonote *downloading_client = nullptr;
+			P2PClientCryptonote *downloading_client = nullptr;
 			std::chrono::steady_clock::time_point request_time;
 			RawBlock rb;
 			enum Status { DOWNLOADING, DOWNLOADED, PREPARING, PREPARED } status = DOWNLOADING;
@@ -193,6 +200,8 @@ protected:
 		std::deque<Hash> m_chain;     // 10k-20k of hashes of the next wanted blocks
 		NetworkAddress chain_source;  // for banning culprit in case of a problem
 		platform::Timer m_download_timer;
+		std::chrono::steady_clock::time_point log_request_timestamp;
+		std::chrono::steady_clock::time_point log_response_timestamp;
 
 		// multicore preparator
 		std::vector<std::thread> threads;
@@ -217,11 +226,11 @@ protected:
 		bool on_idle();
 
 		uint32_t get_known_block_count(uint32_t my) const;
-		void on_connect(P2PClientCyptonote *);
-		void on_disconnect(P2PClientCyptonote *);
-		const std::map<P2PClientCyptonote *, size_t> &get_good_clients() const { return m_good_clients; }
-		void on_msg_notify_request_chain(P2PClientCyptonote *, const NOTIFY_RESPONSE_CHAIN_ENTRY::request &);
-		void on_msg_notify_request_objects(P2PClientCyptonote *, const NOTIFY_RESPONSE_GET_OBJECTS::request &);
+		void on_connect(P2PClientCryptonote *);
+		void on_disconnect(P2PClientCryptonote *);
+		const std::map<P2PClientCryptonote *, size_t> &get_good_clients() const { return m_good_clients; }
+		void on_msg_notify_request_chain(P2PClientCryptonote *, const NOTIFY_RESPONSE_CHAIN_ENTRY::request &);
+		void on_msg_notify_request_objects(P2PClientCryptonote *, const NOTIFY_RESPONSE_GET_OBJECTS::request &);
 		void on_msg_timed_sync(const CORE_SYNC_DATA &payload_data);
 	};
 
@@ -230,10 +239,10 @@ protected:
 	bool on_api_http_request(http::Client *, http::RequestData &&, http::ResponseData &);
 	void on_api_http_disconnect(http::Client *);
 
-	void sync_transactions(P2PClientCyptonote *);
+	void sync_transactions(P2PClientCryptonote *);
 
-	static std::unordered_map<std::string, HTTPHandlerFunction> m_http_handlers;
-	static std::unordered_map<std::string, JSONRPCHandlerFunction> m_jsonrpc_handlers;
+	static const std::unordered_map<std::string, HTTPHandlerFunction> m_http_handlers;
+	static const std::unordered_map<std::string, JSONRPCHandlerFunction> m_jsonrpc_handlers;
 };
 
 }  // namespace cryptonote
