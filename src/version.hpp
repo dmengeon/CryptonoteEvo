@@ -4,13 +4,13 @@
 #pragma once
 
 // defines are for Windows resource compiler
-#define CRYPTONOTE_VERSION_WINDOWS_COMMA 3, 18, 2, 19
-#define CRYPTONOTE_VERSION_WINDOWS_STRING "3.0.2-20180219-Suniaster"
+#define bytecoin_VERSION_WINDOWS_COMMA 3, 18, 3, 20
+#define bytecoin_VERSION_STRING "3.0.2-Suniaster"
 
 #ifdef __cplusplus
 
-namespace cryptonote {
-inline const char *app_version() { return CRYPTONOTE_VERSION_WINDOWS_STRING; }
+namespace bytecoin {
+inline const char *app_version() { return bytecoin_VERSION_STRING; }
 }
 
 #endif
