@@ -364,7 +364,7 @@ bool Currency::parse_account_address_string(const std::string &str, AccountPubli
 }
 
 std::string Currency::format_amount(size_t number_of_decimal_places, Amount amount) {
-	std::string s = std::to_string(amount);
+	std::string s = common::to_string(amount);
 	if (s.size() < number_of_decimal_places + 1)
 		s.insert(0, number_of_decimal_places + 1 - s.size(), '0');
 	s.insert(s.size() - number_of_decimal_places, ".");
@@ -558,7 +558,7 @@ static BinaryArray get_block_hashing_binary_array(const BlockTemplate &bh) {
 	return ba;
 }
 
-Hash bytecoin::get_block_hash(const BlockTemplate &bh) {
+Hash cryptonote::get_block_hash(const BlockTemplate &bh) {
 	BinaryArray ba2 = get_block_hashing_binary_array(bh);
 
 	if (bh.major_version >= 2) {
@@ -570,11 +570,11 @@ Hash bytecoin::get_block_hash(const BlockTemplate &bh) {
 	return new_hash2;
 }
 
-Hash bytecoin::get_auxiliary_block_header_hash(const BlockTemplate &bh) {
+Hash cryptonote::get_auxiliary_block_header_hash(const BlockTemplate &bh) {
 	return get_object_hash(get_block_hashing_binary_array(bh));
 }
 
-Hash bytecoin::get_block_long_hash(const BlockTemplate &bh, crypto::CryptoNightContext &crypto_ctx) {
+Hash cryptonote::get_block_long_hash(const BlockTemplate &bh, crypto::CryptoNightContext &crypto_ctx) {
 	if (bh.major_version == 1) {
 		auto raw_hashing_block = get_block_hashing_binary_array(bh);
 		return crypto_ctx.cn_slow_hash(raw_hashing_block.data(), raw_hashing_block.size());
