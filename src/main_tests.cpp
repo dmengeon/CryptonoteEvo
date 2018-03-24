@@ -1,12 +1,11 @@
 // Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
+// Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
 #include <thread>
 #include "core/BlockChainState.hpp"
 #include "core/Config.hpp"
 #include "core/Difficulty.hpp"
 #include "core/TransactionExtra.hpp"
-#include "common/CommandLine.hpp"
 #include "crypto/crypto.hpp"
 #include "logging/ConsoleLogger.hpp"
 #include "seria/BinaryInputStream.hpp"
@@ -48,8 +47,8 @@ static void fix_merge_mining_tag(BlockTemplate &block) {
 void test_blockchain(common::CommandLine &cmd) {
 	logging::ConsoleLogger logger;
 	Config config(cmd);
-	config.coin_directory = "/home/user/devbox/cryptonote/tests";
-	cryptonote::BlockChain::DB::delete_db(config.coin_directory + "/blockchain");
+	config.data_folder = "../tests";
+	cryptonote::BlockChain::DB::delete_db(config.data_folder + "/blockchain");
 	Currency currency(config.is_testnet);
 	BlockChainState block_chain(logger, config, currency);
 	block_chain.test_print_structure();
