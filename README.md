@@ -4,14 +4,23 @@
 
 ## Rules
 1# Everyone can copy this and editing this
+
 2# Keep Support Listed On Here
+
 3# Open-Source Rules. No One claim each other tech!
+
 4# All Guide and Full Wiki by Cryptonote, Bytecoin, XDN and Monero
+
 5# All Document On Wiki[https://github.com/FndNur1Labs/CryptonoteEvo/wiki]
+
 6# Travis And Docker Support you can PM Shiro[https://github.com/Shiro20] or Homdx[https://github.com/homdx]
+
 7# Older head project rules absolute
+
 8# All tree chain Absolute by Cryptonote Technology
+
 9# Ideas and Improved Open
+
 10# Have fun
 
 
