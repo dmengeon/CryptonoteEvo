@@ -72,11 +72,11 @@ public:
 	explicit Request(const std::string &request_body) : params(common::JsonValue::NIL) { parse_request(request_body); }
 	template<typename T>
 	void set_params(const T &v) {
-		params = seria::toJsonValue(v);
+		params = seria::to_json_value(v);
 	}
 	template<typename T>
 	void load_params(T &v) const {
-		seria::fromJsonValue(v, params);
+		seria::from_json_value(v, params);
 	}
 
 	void set_method(const std::string &m) { method = m; }
@@ -125,12 +125,12 @@ public:
 	void set_id(const OptionalJsonValue &sid) { id = sid; }
 	const OptionalJsonValue &get_id() const { return id; }
 
-	void set_error(const Error &err) { error = seria::toJsonValue(err); }
+	void set_error(const Error &err) { error = seria::to_json_value(err); }
 
 	bool get_error(Error &err) const {
 		if (!error)
 			return false;
-		seria::fromJsonValue(err, error.get());
+		seria::from_json_value(err, error.get());
 		return true;
 	}
 
@@ -148,12 +148,12 @@ public:
 
 	template<typename T>
 	void set_result(const T &v) {
-		result = seria::toJsonValue(v);
+		result = seria::to_json_value(v);
 	}
 
 	template<typename T>
 	void get_result(T &v) const {
-		seria::fromJsonValue(v, result);
+		seria::from_json_value(v, result);
 	}
 
 private:

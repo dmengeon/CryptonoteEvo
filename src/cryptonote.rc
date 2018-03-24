@@ -5,8 +5,8 @@
 //
 
 1 VERSIONINFO
- FILEVERSION CRYPTONOTE_VERSION_WINDOWS_COMMA
- PRODUCTVERSION CRYPTONOTE_VERSION_WINDOWS_COMMA
+ FILEVERSION BYTECOIN_VERSION_WINDOWS_COMMA
+ PRODUCTVERSION BYTECOIN_VERSION_WINDOWS_COMMA
  FILEFLAGSMASK 0x3fL
  FILEFLAGS 0x0L
  FILEOS 0x40004L
@@ -17,14 +17,14 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "[ ] Developers"
-            VALUE "FileDescription", "cryptonote"
-            VALUE "FileVersion", CRYPTONOTE_VERSION_WINDOWS_STRING
+            VALUE "CompanyName", "Cryptonote Developers"
+            VALUE "FileDescription", "Cryptonote"
+            VALUE "FileVersion", BYTECOIN_VERSION_WINDOWS_STRING
             VALUE "InternalName", "cryptonote.rc"
-            VALUE "LegalCopyright", "Copyright (C) [ ] Developers 2018"
+            VALUE "LegalCopyright", "Copyright (C) Cryptonote Developers 2018"
             VALUE "OriginalFilename", "cryptonote.rc"
-            VALUE "ProductName", "cryptonote"
-            VALUE "ProductVersion", CRYPTONOTE_VERSION_WINDOWS_STRING
+            VALUE "ProductName", "Cryptonote"
+            VALUE "ProductVersion", BYTECOIN_VERSION_WINDOWS_STRING
         END
     END
     BLOCK "VarFileInfo"

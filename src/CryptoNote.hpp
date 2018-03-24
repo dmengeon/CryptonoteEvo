@@ -100,7 +100,7 @@ struct AccountPublicAddress {
 	PublicKey view_public_key;
 };
 
-struct SendProof { // proofing that some tx actually sent amount to particular address
+struct SendProof {  // proofing that some tx actually sent amount to particular address
 	Hash transaction_hash;
 	AccountPublicAddress address;
 	Amount amount = 0;
@@ -153,26 +153,25 @@ void ser(cryptonote::SecretKey &v, ISeria &s);
 void ser(cryptonote::KeyDerivation &v, ISeria &s);
 void ser(cryptonote::Signature &v, ISeria &s);
 
-void serMembers(cryptonote::AccountPublicAddress &v, ISeria &s);
-void serMembers(cryptonote::SendProof &v, ISeria &s);
-void serMembers(cryptonote::TransactionInput &v, ISeria &s);
-void serMembers(cryptonote::TransactionOutput &v, ISeria &s);
-void serMembers(cryptonote::TransactionOutputTarget &v, ISeria &s);
+void ser_members(cryptonote::AccountPublicAddress &v, ISeria &s);
+void ser_members(cryptonote::SendProof &v, ISeria &s);
+void ser_members(cryptonote::TransactionInput &v, ISeria &s);
+void ser_members(cryptonote::TransactionOutput &v, ISeria &s);
+void ser_members(cryptonote::TransactionOutputTarget &v, ISeria &s);
 
-void serMembers(cryptonote::CoinbaseInput &v, ISeria &s);
-void serMembers(cryptonote::KeyInput &v, ISeria &s);
+void ser_members(cryptonote::CoinbaseInput &v, ISeria &s);
+void ser_members(cryptonote::KeyInput &v, ISeria &s);
 
-void serMembers(cryptonote::KeyOutput &v, ISeria &s);
+void ser_members(cryptonote::KeyOutput &v, ISeria &s);
 
-void serMembers(cryptonote::TransactionPrefix &v, ISeria &s);
-void serMembers(cryptonote::BaseTransaction &v, ISeria &s);
-void serMembers(cryptonote::Transaction &v, ISeria &s);
+void ser_members(cryptonote::TransactionPrefix &v, ISeria &s);
+void ser_members(cryptonote::BaseTransaction &v, ISeria &s);
+void ser_members(cryptonote::Transaction &v, ISeria &s);
 
-void serMembers(cryptonote::BlockTemplate &v, ISeria &s);
-void serMembers(cryptonote::BlockHeader &v, ISeria &s);
-void serMembers(cryptonote::ParentBlock &v, ISeria &s);
+void ser_members(cryptonote::BlockTemplate &v, ISeria &s);
+void ser_members(cryptonote::BlockHeader &v, ISeria &s);
+void ser_members(cryptonote::ParentBlock &v, ISeria &s);
 
-void serMembers(cryptonote::RawBlock &v, ISeria &s);
-void serMembers(cryptonote::Block &v, ISeria &s);
-
+void ser_members(cryptonote::RawBlock &v, ISeria &s);
+void ser_members(cryptonote::Block &v, ISeria &s);
 }

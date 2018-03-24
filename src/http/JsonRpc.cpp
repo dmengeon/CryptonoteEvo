@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers..
+// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
 // Licensed under the GNU Lesser General Public License. See LICENSING.md for details.
 
 #include "http/JsonRpc.h"

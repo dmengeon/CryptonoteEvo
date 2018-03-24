@@ -162,7 +162,7 @@ int main(int argc, const char *argv[]) try {
 			blockchain_lock = std::make_unique<platform::ExclusiveLock>(coinFolder, "cryptonoted.lock");
 	} catch (const platform::ExclusiveLock::FailedToLock &ex) {
 		std::cout << ex.what() << std::endl;
-		return api::CRYPTONOTED_ALREADY_RUNNING;
+		return api::BYTECOIND_ALREADY_RUNNING;
 	}
 	try {
 		wallet = std::make_unique<Wallet>(
@@ -239,7 +239,7 @@ int main(int argc, const char *argv[]) try {
 			std::cout << ex.what() << std::endl;
 			if (cryptonoted_thread.joinable())
 				cryptonoted_thread.join();  // otherwise terminate will be called in ~thread
-			return api::CRYPTONOTED_BIND_PORT_IN_USE;
+			return api::BYTECOIND_BIND_PORT_IN_USE;
 		}
 	}
 
