@@ -46,8 +46,8 @@ Ruby Version 2 is generate for new bytecoin!this will improved code and sync wor
 The Suniaster Version is merge both technology From Bytecoin x Monero with docker and stable on Travis[Homd n Shiro]. This Version Disable Ico,PoS and Token. Since still testing. Replacing Ruby.
 
 ### Development tree
-- Develop : this for who contribute the works. anyone can do
-- Develop-V2 : this for Ruby 2 Focused from bytecoin Fork[new one]
+- Dev : this for who contribute the works. anyone can do
+- V1-Ruby : this for Old Ruby Version
 - Travis : this is for travis updates
 
 ### Document
