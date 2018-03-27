@@ -6,7 +6,7 @@
 #include <ctime>
 #include <iostream>
 #include <map>
-#include "core/Config.hpp"
+#include "Core/Config.hpp"
 #include "crypto/crypto.hpp"
 
 const float RECONNECT_TIMEOUT           = 10;    // when we tried all addresses, make a small delay
