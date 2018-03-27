@@ -49,7 +49,7 @@ public:
 	template<typename T>
 	static bool decode(const BinaryArray &buf, T &value) {
 		try {
-			seria::fromBinaryKeyValue(value, buf);
+			seria::from_binary_key_value(value, buf);
 		} catch (std::exception &) {
 			return false;
 		}
@@ -58,7 +58,7 @@ public:
 
 	template<typename T>
 	static BinaryArray encode(const T &value) {
-		return seria::toBinaryKeyValue(value);
+		return seria::to_binary_key_value(value);
 	}
 };
 }
