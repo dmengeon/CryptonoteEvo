@@ -2,7 +2,7 @@
 // Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
 #include "PeerDB.hpp"
-#include "core/Config.hpp"
+#include "Core/Config.hpp"
 
 #include <time.h>
 #include <iostream>
