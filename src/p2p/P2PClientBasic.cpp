@@ -3,7 +3,7 @@
 
 #include "P2PClientBasic.hpp"
 #include <iostream>
-#include "core/Config.hpp"
+#include "Core/Config.hpp"
 
 const float HANDSHAKE_TIMEOUT  = 30;
 const float MESSAGE_TIMEOUT    = 60 * 6;
