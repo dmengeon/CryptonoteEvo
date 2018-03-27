@@ -8,7 +8,7 @@
 #include <set>
 #include "CryptoNote.hpp"
 
-#include "core/Currency.hpp"
+#include "Core/Currency.hpp"
 #include "p2p/P2pProtocolTypes.hpp"
 #include "platform/DB.hpp"
 #include "platform/Network.hpp"

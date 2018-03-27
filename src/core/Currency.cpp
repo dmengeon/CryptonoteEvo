@@ -46,7 +46,7 @@ const std::vector<Amount> Currency::DECIMAL_PLACES = {1, 10, 100, 1000, 10000, 1
     1000000000, 10000000000, 100000000000, 1000000000000, 10000000000000, 100000000000000, 1000000000000000,
     10000000000000000, 100000000000000000, 1000000000000000000, 10000000000000000000ull};
 
-const std::vector<uint64_t> Currency::POWERS_OF_TEN = {
+/*const std::vector<uint64_t> Currency::POWERS_OF_TEN = {
 	1,
 	10,
 	100,
@@ -67,7 +67,7 @@ const std::vector<uint64_t> Currency::POWERS_OF_TEN = {
 	100000000000000000,
 	1000000000000000000ull,
 	10000000000000000000ull
-};
+};*/
 
 Currency::Currency(bool is_testnet)
     : is_testnet(is_testnet)
@@ -589,7 +589,7 @@ Hash cryptonote::get_block_long_hash(const BlockTemplate &bh, crypto::CryptoNigh
 
 //new code up
 
-uint64_t Currency::baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t height) const {
+/*uint64_t Currency::baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t height) const {
   if (height == 1) {
     return ICO_BLOCK_REWARD;
   }
@@ -602,4 +602,4 @@ uint64_t Currency::baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t h
   base_reward = (std::min)(base_reward, money_supply - alreadyGeneratedCoins);
 
   return base_reward;
-}
+}*/
