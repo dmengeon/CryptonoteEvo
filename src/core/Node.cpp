@@ -47,7 +47,7 @@ Node::Node(logging::ILogger &log, const Config &config, BlockChainState &block_c
 		    config.ssl_certificate_pem_file,
 		    config.ssl_certificate_password ? config.ssl_certificate_password.get() : std::string()));
 
-	m_commit_timer.once(DB_COMMIT_PERIOD_BYTECOIND);
+	m_commit_timer.once(DB_COMMIT_PERIOD_CRYPTONOTED);
 	advance_long_poll();
 }
 
