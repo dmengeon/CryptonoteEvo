@@ -7,11 +7,9 @@ matrix:
   include:
     # works on debian-jessir
     - os: linux
-      addons:
-        apt:
-          packages:
-            - cmake-data
-            - cmake            
-before_install:
-  - sudo chmod +x test.sh
-  - ./test.sh
+        services: docker
+        env:
+          - V=Dockerfile-note
+        script:
+          - ./archive.sh
+          - docker build -f docker/dockernote/Dockerfile-note .
