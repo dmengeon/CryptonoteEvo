@@ -36,25 +36,22 @@ Cryptonote Evolution aka Evo is provided who wanna studied more about Cryptonote
 ## After for Cryptonote Technology
 Soon we keep on track Cryptonote for free people learn crypto
 
-## Ruby Version
-Ruby version is release for more expert and easy way with XDN team behind cryptonote token. And more change on files.
-
 ## Ruby V2
-Ruby Version 2 is generate for new bytecoin!this will improved code and sync work~
+Ruby Version 2 is generate for new bytecoin!this will improved code and sync work. Change for last final ICO's~
 
 ## The Suniaster - V2.1
 The Suniaster Version is merge both technology From Bytecoin x Monero with docker and stable on Travis[Homd n Shiro]. This Version Disable Ico,PoS and Token. Since still testing. Replacing Ruby.
+
+## The Suniaster - V2.2
+This version is completed with new docker. Soon updates for travis.
 
 ### Development tree
 - Dev : this for who contribute the works. anyone can do
 - V1-Ruby : this for Old Ruby Version
 - Travis : this is for travis updates
 
-### Document
-- building for wrote on building updates
-- contrib for wrote who contribute
-- F.A.Q for frequently ask question
-- installation for installation updates and document installed
+### Important Links
+- GUI : https://github.com/Nur1Labs/CryptonoteEvo-GUI
 
 ## Contribute Official
 - Cryptonote Developer : https://github.com/amjuarez
