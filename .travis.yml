@@ -1,17 +1,12 @@
-language: cpp
 sudo: false
-dist: trusty
-install: automake autoconf
-script: make
+language: cpp
 matrix:
   include:
-    # works on debian-jessir
+    # works on debian-stretch
     - os: linux
-      addons:
-        apt:
-          packages:
-            - cmake-data
-            - cmake            
-before_install:
-  - sudo chmod +x test.sh
-  - ./test.sh
+        services: docker
+        env:
+          - V=Dockerfile-note
+        script:
+          - ./test.sh
+          - docker build -f docker/dockernote/Dockerfile-note .
