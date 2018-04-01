@@ -8,5 +8,5 @@ matrix:
         env:
           - V=Dockerfile-note
         script:
-          - ./archive.sh
+          - ./test.sh
           - docker build -f docker/dockernote/Dockerfile-note .
