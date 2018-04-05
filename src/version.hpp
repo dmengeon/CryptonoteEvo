@@ -7,7 +7,7 @@
 #define cryptonote_VERSION_WINDOWS_COMMA 2, 0, 3, 50
 #define cryptonote_VERSION_STRING "2.0.3-Suniaster"
 
-#ifdef __cplusplus
+#ifndef RC_INVOKED  // Windows resource compiler
 
 namespace bytecoin {
 inline const char *app_version() { return cryptonote_VERSION_STRING; }
