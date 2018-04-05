@@ -81,3 +81,9 @@ Release notes 2.0.2 -The Suniaster
 Release notes 2.0.3 -The Suniaster
 
 - removes ico. reason have many bugs after daemon runs
+
+Release notes 2.0.4 -The Suniaster
+
+- ソフトフォーク
+- ドッカーのサイク
+- テストとしてのウォレットの追加[rec bcn]
