@@ -9,7 +9,7 @@
 
 #ifndef RC_INVOKED  // Windows resource compiler
 
-namespace bytecoin {
+namespace cryptonote {
 inline const char *app_version() { return cryptonote_VERSION_STRING; }
 }
 

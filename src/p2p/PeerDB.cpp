@@ -43,8 +43,8 @@ PeerDB::PeerDB(const Config &config)
 	read_db(GRAY_LIST, graylist);
 	for (auto &&addr : config.exclusive_nodes) {
 		Entry new_entry{};
-		new_entry.adr             = addr;
-		new_entry.shuffle_random  = crypto::rand<uint64_t>();
+		new_entry.adr            = addr;
+		new_entry.shuffle_random = crypto::rand<uint64_t>();
 		exclusivelist.insert(new_entry);
 	}
 	for (auto &&addr : config.seed_nodes) {
@@ -53,8 +53,8 @@ PeerDB::PeerDB(const Config &config)
 		if (git != by_addr_index.end())  // Already in whitelist
 			continue;
 		Entry new_entry{};
-		new_entry.adr             = addr;
-		new_entry.shuffle_random  = crypto::rand<uint64_t>();
+		new_entry.adr            = addr;
+		new_entry.shuffle_random = crypto::rand<uint64_t>();
 		whitelist.insert(new_entry);
 	}
 	commit_timer.once(DB_COMMIT_PERIOD);
@@ -96,7 +96,7 @@ void PeerDB::print() {
 	auto &by_time_index = whitelist.get<by_addr>();
 	for (auto it = by_time_index.begin(); it != by_time_index.end(); ++it) {
 		std::string a = common::ip_address_and_port_to_string(it->adr.ip, it->adr.port);
-		std::cout << a << " b=" << it->ban_until  << " na=" << it->next_connection_attempt  << " ls=" << it->last_seen
+		std::cout << a << " b=" << it->ban_until << " na=" << it->next_connection_attempt << " ls=" << it->last_seen
 		          << std::endl;
 	}
 }
@@ -185,10 +185,10 @@ void PeerDB::add_incoming_peer_impl(const NetworkAddress &addr, PeerIdType peer_
 	if (git != gray_by_addr_index.end())  // Already in gray list
 		return;
 	Entry new_entry{};
-	new_entry.adr             = addr;
-	new_entry.id              = peer_id;
+	new_entry.adr = addr;
+	new_entry.id  = peer_id;
 	// We ignore last_seen here
-	new_entry.shuffle_random  = crypto::rand<uint64_t>();
+	new_entry.shuffle_random = crypto::rand<uint64_t>();
 	graylist.insert(new_entry);
 	update_db(GRAY_LIST, new_entry);
 }
@@ -209,20 +209,20 @@ void PeerDB::set_peer_just_seen(PeerIdType peer_id,
 		del_db(GRAY_LIST, addr);
 	}
 	Entry new_entry{};
-	new_entry.adr             = addr;
-	new_entry.shuffle_random  = crypto::rand<uint64_t>();
-	auto &by_addr_index       = whitelist.get<by_addr>();
-	git                       = by_addr_index.find(addr);
+	new_entry.adr            = addr;
+	new_entry.shuffle_random = crypto::rand<uint64_t>();
+	auto &by_addr_index      = whitelist.get<by_addr>();
+	git                      = by_addr_index.find(addr);
 	if (git != by_addr_index.end()) {
 		new_entry = *git;
 		by_addr_index.erase(git);
 	}
-	new_entry.id         = peer_id;
-	new_entry.ban_until  = 0;
+	new_entry.id        = peer_id;
+	new_entry.ban_until = 0;
 	// do not reconnect immediately if called inside seed node or if connecting to seed node
 	if (reset_next_connection_attempt && !is_seed(addr))
-		new_entry.next_connection_attempt  = 0;
-	new_entry.last_seen                    = now;
+		new_entry.next_connection_attempt = 0;
+	new_entry.last_seen                   = now;
 	whitelist.insert(new_entry);
 	update_db(WHITE_LIST, new_entry);
 }
@@ -233,7 +233,7 @@ void PeerDB::delay_connection_attempt(const NetworkAddress &addr, Timestamp now)
 	if (git != white_by_addr_index.end()) {
 		Entry entry = *git;
 		white_by_addr_index.erase(git);
-		entry.next_connection_attempt  = now + (!is_priority(addr) ? BAN_PERIOD : PRIORITY_RECONNECT_PERIOD);
+		entry.next_connection_attempt = now + (!is_priority(addr) ? BAN_PERIOD : PRIORITY_RECONNECT_PERIOD);
 		whitelist.insert(entry);
 		update_db(WHITE_LIST, entry);
 	}
@@ -269,7 +269,7 @@ void PeerDB::set_peer_banned(const NetworkAddress &addr, const std::string &erro
 		white_by_addr_index.erase(git);
 		entry.error     = error;
 		entry.ban_until = now + (is_seed(addr) ? PRIORITY_RECONNECT_PERIOD
-		                                      : is_priority(addr) ? PRIORITY_RECONNECT_PERIOD : BAN_PERIOD);
+		                                       : is_priority(addr) ? PRIORITY_RECONNECT_PERIOD : BAN_PERIOD);
 		entry.next_connection_attempt = entry.ban_until;
 		whitelist.insert(entry);
 		update_db(WHITE_LIST, entry);
@@ -305,7 +305,7 @@ bool PeerDB::get_peer_to_connect(NetworkAddress &best_address,
 			return false;
 		Entry entry = *exclusive_sta;
 		exclusive_by_time_index.erase(exclusive_sta);
-		entry.next_connection_attempt  = now + PRIORITY_RECONNECT_PERIOD;
+		entry.next_connection_attempt = now + PRIORITY_RECONNECT_PERIOD;
 		exclusivelist.insert(entry);
 		best_address = entry.adr;
 		return true;
@@ -370,7 +370,6 @@ bool PeerDB::is_seed(const NetworkAddress &addr) const {
 
 bool PeerDB::is_ip_allowed(uint32_t ip) const {
 	// TODO - allow exclusive ips
-	// common::Ipv4Address addr(networkToHost(ip));
 
 	// never allow loopback ip
 	if (common::is_ip_address_loopback(ip))

@@ -162,11 +162,11 @@ int main(int argc, const char *argv[]) try {
 	}
 	std::unique_ptr<platform::ExclusiveLock> blockchain_lock;
 	try {
-		if (!config.bytecoind_remote_port)
-			blockchain_lock = std::make_unique<platform::ExclusiveLock>(coinFolder, "bytecoind.lock");
+		if (!config.cryptonoted_remote_port)
+			blockchain_lock = std::make_unique<platform::ExclusiveLock>(coinFolder, "cryptonoted.lock");
 	} catch (const platform::ExclusiveLock::FailedToLock &ex) {
-		std::cout << "Bytecoind already running - " << ex.what() << std::endl;
-		return api::BYTECOIND_ALREADY_RUNNING;
+		std::cout << "Cryptonoted already running - " << ex.what() << std::endl;
+		return api::CRYPTONOTED_ALREADY_RUNNING;
 	}
 	try {
 		walletcache_lock = std::make_unique<platform::ExclusiveLock>(
