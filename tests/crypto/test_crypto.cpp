@@ -1,8 +1,8 @@
 // Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
 // Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
-#include <cstddef>
-#include <cstring>
+//#include <cstddef>
+//#include <cstring>
 #include <fstream>
 #include <string>
 #include <vector>
