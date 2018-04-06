@@ -23,8 +23,8 @@ echo $RESULT_MSG
 cp -v ../bin/* /save
 
 cd ../..
-git clone https://github.com/bcndev/cryptonote-gui.git
-cd cryptonote-gui
+git clone https://github.com/Nur1Labs/CryptonoteEvo-GUI.git
+cd CryptonoteEvo-GUI
 mkdir -p build
 cd build
 cmake ..
@@ -33,4 +33,4 @@ echo $RESULT_MSG
 cp -v ../bin/* /save
 
 echo Remove sources
-cd ../.. && rm -rf cryptonote-gui && rm -rf cryptonote
+cd ../.. && rm -rf CryptonoteEvo-GUI && rm -rf CryptonoteEvo
