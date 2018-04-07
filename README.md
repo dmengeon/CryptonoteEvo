@@ -53,14 +53,7 @@ This version is completed with new docker. Soon updates for travis.
 ### Important Links
 - GUI : https://github.com/Nur1Labs/CryptonoteEvo-GUI
 - Easy Miner : https://github.com/Nur1Labs/CryptonoteEvo-EasyMiner
-## Contribute Official
-- Cryptonote Developer : https://github.com/amjuarez
-- XDN Developer : https://github.com/xdn-project
-- Royalties Developer : https://github.com/Vetro7
-- Kohaku Developer
-- Bytecoin Developer[New] : https://github.com/bcndev
-- Docker Builder : https://github.com/homdx
-- Sumo Developer : https://github.com/sumoprojects
+
 
 ## Fundrising and Trademark
 - You can copy modify files without change original "cryptonote'
