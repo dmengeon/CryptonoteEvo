@@ -1,6 +1,3 @@
-// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSE for details.
-
 #pragma once
 
 // Get rid of this header as soon as Google NDK updates its compiler to support std::to_string family of functions
