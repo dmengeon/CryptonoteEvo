@@ -18,6 +18,7 @@ using namespace cryptonote;
 
 const static UUID CRYPTONOTE_NETWORK{{0x11, 0x10, 0x01, 0x11, 0x11, 0x00, 0x01, 0x01, 0x10, 0x11, 0x00, 0x12, 0x10, 0x11,
     0x01, 0x10}};  // Bender's nightmare
+//boost,id net0, id net1. you must used different network example 0x05, 0x06, 0x05. this mean for SF & HF self easy way
 
 Config::Config(common::CommandLine &cmd)
     : is_testnet(cmd.get_bool("--testnet"))

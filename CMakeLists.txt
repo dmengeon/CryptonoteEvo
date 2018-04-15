@@ -2,7 +2,7 @@
 # Licensed under the GNU Lesser General Public License. See LICENSE for details.
 
 cmake_minimum_required(VERSION 3.5)
-project(cryptonote)
+project(cryptonote) # change this for made own coin
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_C_STANDARD 11)
 # message(STATUS "Cryptonoted profile: According to cmake, sizeof(void *) == " ${CMAKE_SIZEOF_VOID_P})

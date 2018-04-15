@@ -20,7 +20,7 @@ const uint32_t CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT      = 60 * 60 * 2;
 const uint32_t BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW = 60;
 
 // MONEY_SUPPLY - total number coins to be generated
-const uint64_t MONEY_SUPPLY          = std::numeric_limits<uint64_t>::max();
+const uint64_t MONEY_SUPPLY          = std::numeric_limits<uint64_t>::max(); //this supply you need config
 const unsigned EMISSION_SPEED_FACTOR = 18;
 static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED_FACTOR");
 
@@ -30,7 +30,7 @@ const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE =
 const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 = 20000;
 const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 = 10000;
 // const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE;
-const size_t CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE = 600;
+const size_t CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE = 600; //coinbase size
 const size_t CRYPTONOTE_DISPLAY_DECIMAL_POINT       = 8;
 const uint64_t MINIMUM_FEE                          = 1000000;  // pow(10, 6)
 const uint64_t DEFAULT_DUST_THRESHOLD               = 1000000;  // pow(10, 6)
@@ -75,7 +75,7 @@ const char CRYPTONOTE_BLOCKS_FILENAME[]       = "blocks.bin";
 const char CRYPTONOTE_BLOCKINDEXES_FILENAME[] = "blockindexes.bin";
 }  // parameters
 
-const char CRYPTONOTE_NAME[] = "cryptonote";
+const char CRYPTONOTE_NAME[] = "cryptonote"; //this for name your coin
 
 const uint8_t CURRENT_TRANSACTION_VERSION = 1;
 
@@ -101,6 +101,17 @@ const uint32_t P2P_DEFAULT_PING_CONNECTION_TIMEOUT       = 2000;           // 2 
 const uint32_t P2P_DEFAULT_INVOKE_TIMEOUT                = 60 * 2 * 1000;  // 2 minutes
 const uint32_t P2P_DEFAULT_HANDSHAKE_INVOKE_TIMEOUT      = 5000;           // 5 seconds
 const char P2P_STAT_TRUSTED_PUB_KEY[] = "E29507CA55455F37A3B783EE2C5123B8B6A34A0C5CAAE050922C6254161480C1";
+
+//This For Ico you can remove or not used it
+// COIN - number of smallest units in one coin
+const uint64_t POINT                                         = UINT64_C(1000); // pow(10, 3)
+const uint64_t COIN                                          = UINT64_C(1000000); // pow(10, 6)
+const uint64_t MINIMUM_FEE                                   = UINT64_C(10000); // pow(10, 4)
+const uint64_t DEFAULT_DUST_THRESHOLD 						 = UINT64_C(10000); // pow(10, 4)
+const uint64_t START_BLOCK_REWARD                            = (UINT64_C(100) * parameters::POINT);
+const uint64_t ICO_BLOCK_REWARD	                             = (UINT64_C(18446744073) * parameters::COIN); // 18.4 billion ICO
+const uint64_t MAX_BLOCK_REWARD                              = (UINT64_C(10) * parameters::COIN);
+const uint64_t REWARD_INCREASE_INTERVAL						 = (UINT64_C(264000));
 
 const char *const SEED_NODES[] = {
     "10.0.2.15:8080"};
@@ -169,3 +180,5 @@ constexpr const CheckpointData CHECKPOINTS[] = {
     {1451000, "327814e8ee24650ad95d62b61e066d884abbb9d5ac18cd258baf24086c2a0882"},
     {1479000, "16c9a464514685d325ac06b82e4476d0d5467c59b733f5fbd950e9931e58d18c"}*/};
 }  // CryptoNote
+
+//Checkpoint need config by {height, hash} try look block explorer or see our wiki for Hard Fork or Soft Fork
