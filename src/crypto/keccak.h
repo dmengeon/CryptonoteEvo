@@ -1,5 +1,3 @@
-// keccak.h
-// 19-Nov-11  Markku-Juhani O. Saarinen <mjos@iki.fi>
 #pragma once
 
 #include <stdint.h>

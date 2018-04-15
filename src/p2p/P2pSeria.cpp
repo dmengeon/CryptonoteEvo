@@ -1,6 +1,3 @@
-// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSE for details.
-
 #include "CryptoNoteProtocolDefinitions.hpp"
 #include "P2pProtocolDefinitions.hpp"
 #include "P2pProtocolTypes.hpp"

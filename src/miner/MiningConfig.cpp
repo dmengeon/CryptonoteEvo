@@ -1,6 +1,3 @@
-// Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-// Licensed under the GNU Lesser General Public License. See LICENSE for details.
-
 #include "MiningConfig.hpp"
 #include "common/CommandLine.hpp"
 #include "common/Ipv4Address.hpp"

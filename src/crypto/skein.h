@@ -1,13 +1,5 @@
 #pragma once
 /**************************************************************************
-**
-** Interface declarations and internal definitions for Skein hashing.
-**
-** Source code author: Doug Whiting, 2008.
-**
-** This algorithm and source code is released to the public domain.
-**
-***************************************************************************
 ** 
 ** The following compile-time switches may be defined to control some
 ** tradeoffs between speed, code size, error checking, and security.
