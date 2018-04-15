@@ -136,10 +136,10 @@ add_library(cryptonote-core ${SOURCE_FILES})
 target_link_libraries(cryptonote-core cryptonote-crypto)
 if(WIN32)
     add_executable(walletd src/main_walletd.cpp src/cryptonote.rc) # .rc works only if referenced directly in add_executable
-    add_executable(cryptonoted src/main_cryptonoted.cpp src/cryptonote.rc) # .rc works only if referenced directly in add_executable
+    add_executable(cryptonoted src/main_cryptonoted.cpp src/cryptonote.rc) # .rc works only if referenced directly in add_executable + change this for made own coin
 else()
     add_executable(walletd src/main_walletd.cpp)
-    add_executable(cryptonoted src/main_cryptonoted.cpp)
+    add_executable(cryptonoted src/main_cryptonoted.cpp) # change this for made own coin
 endif()
 add_executable(tests src/main_tests.cpp tests/io.hpp
         tests/crypto/test_crypto.cpp tests/crypto/test_crypto.hpp
@@ -149,7 +149,7 @@ add_executable(tests src/main_tests.cpp tests/io.hpp
 set(Boost_USE_STATIC_LIBS ON)
 add_definitions(-DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1) # boost::_1 conflicts with std::_1
 target_link_libraries(walletd cryptonote-crypto cryptonote-core)
-target_link_libraries(cryptonoted cryptonote-crypto cryptonote-core)
+target_link_libraries(cryptonoted cryptonote-crypto cryptonote-core) # change this for made own coin
 target_link_libraries(tests cryptonote-crypto cryptonote-core)
 if(WIN32)
 else()
@@ -161,9 +161,9 @@ else()
     if(APPLE)
         set(CMAKE_OSX_DEPLOYMENT_TARGET "10.11")
         target_link_libraries(walletd "-framework Foundation" "-framework IOKit")
-        target_link_libraries(cryptonoted "-framework Foundation" "-framework IOKit")
+        target_link_libraries(cryptonoted "-framework Foundation" "-framework IOKit") # change this for made own coin
     endif()
     target_link_libraries(walletd ${Boost_LIBRARIES} ${LINK_OPENSSL} dl pthread)
-    target_link_libraries(cryptonoted ${Boost_LIBRARIES} ${LINK_OPENSSL} dl pthread)
+    target_link_libraries(cryptonoted ${Boost_LIBRARIES} ${LINK_OPENSSL} dl pthread) # change this for made own coin
     target_link_libraries(tests ${Boost_LIBRARIES} ${LINK_OPENSSL} dl pthread)
 endif()
