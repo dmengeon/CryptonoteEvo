@@ -1,8 +1,10 @@
 // Copyright (c) 2012-2018
 /* 
 ==================Core Developer==================
-The CryptoNote developers
-The Bytecoin developers
+The CryptoNote Developer
+The Bytecoin Developer
+The Monero Developer
+The Sumo Developer
 ==================Add On Developer================
 [ ] developers
 - Sora as Core Platform
