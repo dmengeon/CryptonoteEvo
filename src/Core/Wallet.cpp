@@ -1,3 +1,4 @@
+#include <http/JsonRpc.h>
 #include "CryptoNoteTools.hpp"
 #include "WalletSerializationV1.h"
 #include "WalletState.hpp"
@@ -51,7 +52,6 @@ static void encrypt_key_pair(EncryptedWalletRecord &r, PublicKey pk, SecretKey s
 size_t Wallet::wallet_file_size(size_t records) {
 	return 1 + sizeof(ContainerStoragePrefix) + sizeof(uint64_t) * 2 + sizeof(EncryptedWalletRecord) * records;
 }
-
 
 void Wallet::load_container_storage() {
 	uint8_t version = 0;
@@ -383,13 +383,14 @@ bool Wallet::spend_keys_for_address(const AccountPublicAddress &addr, AccountKey
 	return true;
 }
 
-std::unordered_map<PublicKey, WalletRecord> Wallet::get_single_record(const AccountPublicAddress &addr) const {
-	std::unordered_map<PublicKey, WalletRecord> result;
+bool Wallet::get_only_record(
+    std::unordered_map<PublicKey, WalletRecord> &records, const AccountPublicAddress &addr) const {
 	auto rit = m_wallet_records.find(addr.spend_public_key);
-	if (rit != m_wallet_records.end() && rit->second.spend_public_key == addr.spend_public_key &&
-	    m_view_public_key == addr.view_public_key)
-		result.insert(*rit);
-	return result;
+	if (rit == m_wallet_records.end() || rit->second.spend_public_key != addr.spend_public_key ||
+	    m_view_public_key != addr.view_public_key)
+		return false;
+	records.insert(*rit);
+	return true;
 }
 
 bool Wallet::save_history(const Hash &bid, const History &used_addresses) const {

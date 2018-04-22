@@ -129,7 +129,7 @@ void ser_members(CoinbaseInput &v, ISeria &s) { seria_kv("block_index", v.block_
 void ser_members(KeyInput &v, ISeria &s) {
 	seria_kv("amount", v.amount, s);
 	seria_kv("output_indexes", v.output_indexes, s);
-	seria_kv("keyImage", v.key_image, s);
+	seria_kv("key_image", v.key_image, s);
 }
 
 void ser_members(KeyOutput &v, ISeria &s) { seria_kv("key", v.key, s); }
@@ -162,8 +162,8 @@ void ser_members(Transaction &v, ISeria &s) {
 
 	//        seria_kv("signatures", v.signatures, s);
 
-	bool is_base     = (v.inputs.size() == 1) && (v.inputs[0].type() == typeid(CoinbaseInput));
-	size_t sig_size  = is_base ? 0 : v.inputs.size();
+	bool is_base    = (v.inputs.size() == 1) && (v.inputs[0].type() == typeid(CoinbaseInput));
+	size_t sig_size = is_base ? 0 : v.inputs.size();
 
 	// ignore base transaction
 	if (s.is_input()) {
@@ -358,7 +358,7 @@ seria_kv("transactions", v.transactions, s); }
  */
 void ser_members(api::walletd::CreateTransaction::Request &v, ISeria &s) {
 	seria_kv("transaction", v.transaction, s);
-	seria_kv("spend_address", v.spend_address, s);
+	seria_kv("spend_addresses", v.spend_addresses, s);
 	seria_kv("any_spend_address", v.any_spend_address, s);
 	seria_kv("change_address", v.change_address, s);
 	seria_kv("confirmed_height_or_depth", v.confirmed_height_or_depth, s);
@@ -425,7 +425,7 @@ void ser_members(api::cryptonoted::SyncMemPool::Request &v, ISeria &s) {
 }
 void ser_members(api::cryptonoted::SyncMemPool::Response &v, ISeria &s) {
 	seria_kv("removed_hashes", v.removed_hashes, s);
-	seria_kv("added_binary_transactions", v.added_binary_transactions, s);
+	seria_kv("added_bc_transactions", v.added_bc_transactions, s);
 	seria_kv("added_transactions", v.added_transactions, s);
 	seria_kv("status", v.status, s);
 }

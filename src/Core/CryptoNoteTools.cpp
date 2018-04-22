@@ -176,9 +176,6 @@ void seria::ser_members(ParentBlockSerializer &v, ISeria &s) {
 		v.m_parent_block.blockchain_branch.resize(mm_tag.depth);
 	}
 
-	//  serializer(m_parent_block.blockchainBranch, "blockchainBranch");
-	// TODO: Make arrays with computable size! This code won't work with json
-	// serialization!
 	s.object_key("blockchain_branch");
 	btb_size = v.m_parent_block.blockchain_branch.size();
 	s.begin_array(btb_size, true);
