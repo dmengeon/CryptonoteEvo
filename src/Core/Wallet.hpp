@@ -75,7 +75,7 @@ public:
 
 	bool spend_keys_for_address(const AccountPublicAddress &, AccountKeys &) const;
 	AccountPublicAddress get_first_address() const;
-	
+
 	static size_t wallet_file_size(size_t records);
 
 	std::string get_cache_name() const;
@@ -92,3 +92,5 @@ public:
 	bool save_history(const Hash &bid, const History &used_addresses) const;
 	History load_history(const Hash &bid) const;
 };
+
+}  // namespace cryptonote

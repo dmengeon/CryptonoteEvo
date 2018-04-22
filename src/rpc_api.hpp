@@ -130,7 +130,7 @@ namespace cryptonote {
 namespace api {
 
 enum return_code {
-	CRYPTONOTED_DATABASE_ERROR    = 101,  // We hope we are out of disk space, otherwise blockchain DB is corrupted.
+	DATABASE_ERROR    = 101,  // We hope we are out of disk space, otherwise blockchain DB is corrupted.
 	CRYPTONOTED_ALREADY_RUNNING   = 102,
 	WALLETD_BIND_PORT_IN_USE    = 103,
 	CRYPTONOTED_BIND_PORT_IN_USE  = 104,

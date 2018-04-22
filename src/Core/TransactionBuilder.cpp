@@ -132,7 +132,7 @@ Transaction TransactionBuilder::sign(const Hash &tx_derivation_seed) {
 	m_transaction.inputs.resize(m_input_descs.size());
 	for (size_t i                  = 0; i != m_input_descs.size(); ++i)
 		m_transaction.inputs.at(i) = std::move(m_input_descs[i].input);
-	KeyPair tx_keys                 = deterministic_keys_from_seed(m_transaction, tx_derivation_seed);
+	KeyPair tx_keys                = deterministic_keys_from_seed(m_transaction, tx_derivation_seed);
 
 	TransactionExtraPublicKey pk = {tx_keys.public_key};
 	m_extra.set(pk);
@@ -160,8 +160,8 @@ Transaction TransactionBuilder::sign(const Hash &tx_derivation_seed) {
 			keys_ptrs.push_back(&o.public_key);
 		}
 		signatures.resize(keys_ptrs.size(), Signature{});
-		if (!generate_ring_signature(
-		        hash, input.key_image, keys_ptrs, desc.eph_keys.secret_key, desc.real_output_index, signatures.data())) {
+		if (!generate_ring_signature(hash, input.key_image, keys_ptrs, desc.eph_keys.secret_key, desc.real_output_index,
+		        signatures.data())) {
 			throw std::runtime_error("output keys detected as corrupted during ring signing");
 		}
 		m_transaction.signatures.at(i) = signatures;

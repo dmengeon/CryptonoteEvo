@@ -66,3 +66,5 @@ public:
 	std::string get_data_folder() const { return data_folder; }  // suppress creation of dir itself
 	std::string get_data_folder(const std::string &subdir) const;
 };
+
+}  // namespace cryptonote

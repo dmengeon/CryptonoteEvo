@@ -107,6 +107,7 @@ struct KeysStorage {
 
 std::string read_cipher(common::IInputStream &source, const std::string &name) {
 	std::string cipher;
+	//	cryptonote::BinaryInputStreamSerializer s(source);
 	seria::BinaryInputStream s(source);
 	s(cipher);  // , name
 
@@ -136,6 +137,7 @@ void deserialize_encrypted(Object &obj, const std::string &name,
 
 	deserialize(obj, name, plain);
 }
+
 }  // anonymous namespace
 
 namespace seria {
@@ -170,7 +172,6 @@ WalletSerializerV1::WalletSerializerV1(crypto::PublicKey &view_public_key, crypt
     : m_view_public_key(view_public_key), m_view_secret_key(view_secret_key), m_wallets_container(wallets_container) {}
 
 void WalletSerializerV1::load(const crypto::chacha8_key &key, common::IInputStream &source) {
-	//	cryptonote::BinaryInputStreamSerializer s(source);
 	seria::BinaryInputStream s(source);
 	s.begin_object();
 
@@ -219,7 +220,7 @@ void WalletSerializerV1::load_wallet_v1(common::IInputStream &source, const cryp
 	check_keys();
 
 	bool details_saved;
-	serializer(details_saved);
+	serializer(details_saved);  // , "has_details"
 }
 
 void WalletSerializerV1::load_wallet_v1_keys(seria::ISeria &s) {
@@ -246,7 +247,7 @@ uint32_t WalletSerializerV1::load_version(common::IInputStream &source) {
 	seria::BinaryInputStream s(source);
 
 	uint32_t version = std::numeric_limits<uint32_t>::max();
-	s(version); 
+	s(version);
 
 	return version;
 }
@@ -283,11 +284,11 @@ void WalletSerializerV1::check_keys() {
 
 /*void WalletSerializerV1::load_flags(
     bool &details, bool &cache, common::IInputStream &source, CryptoContext &crypto_ctx) {
-	deserialize_encrypted(details, "details", crypto_ctx, source);
-	crypto_ctx.inc_iv();
+    deserialize_encrypted(details, "details", crypto_ctx, source);
+    crypto_ctx.inc_iv();
 
-	deserialize_encrypted(cache, "cache", crypto_ctx, source);
-	crypto_ctx.inc_iv();
+    deserialize_encrypted(cache, "cache", crypto_ctx, source);
+    crypto_ctx.inc_iv();
 }*/
 
 void WalletSerializerV1::load_wallets(common::IInputStream &source, CryptoContext &crypto_ctx) {
@@ -328,4 +329,5 @@ void WalletSerializerV1::load_wallets(common::IInputStream &source, CryptoContex
 		index.push_back(wallet);
 	}
 }
+
 }  // namespace cryptonote

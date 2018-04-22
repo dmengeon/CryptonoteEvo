@@ -35,12 +35,14 @@ private:
 	void load_public_key(common::IInputStream &source, CryptoContext &);
 	void load_secret_key(common::IInputStream &source, CryptoContext &);
 	void check_keys();
-	//void load_flags(bool &details, bool &cache, common::IInputStream &source, CryptoContext &);
+//	void load_flags(bool &details, bool &cache, common::IInputStream &source, CryptoContext &);
 	void load_wallets(common::IInputStream &source, CryptoContext &);
 
 	void load_wallet_v1_keys(seria::ISeria &s);
+
 	crypto::PublicKey &m_view_public_key;
 	crypto::SecretKey &m_view_secret_key;
+
 	std::vector<WalletRecord> &m_wallets_container;
 };
 

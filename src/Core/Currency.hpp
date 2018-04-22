@@ -51,6 +51,14 @@ public:
 	uint64_t max_block_size_growth_speed_numerator;
 	uint64_t max_block_size_growth_speed_denominator;
 
+	//added ico setting
+	//uint64_t cryptonote_pt;
+	//uint64_t cryptonote_cn;
+	//uint64_t cryptonote_ico_start;
+	//uint64_t cryptonote_ico_block;
+	//uint64_t cryptonote_ico_max;
+	//uint64_t cryptonote_ico_interval;
+
 	Timestamp locked_tx_allowed_delta_seconds;
 	Height locked_tx_allowed_delta_blocks;
 

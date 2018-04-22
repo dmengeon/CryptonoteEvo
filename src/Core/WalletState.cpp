@@ -27,7 +27,7 @@ static const std::string ADDRESS_BALANCE_PREFIX = "abal/";
 static const std::string UNLOCK_BLOCK_PREFIX = "unlb/";
 static const std::string UNLOCK_TIME_PREFIX  = "unlt/";
 
-static const std::string ADDRESSES_PREFIX = "cn/";
+static const std::string ADDRESSES_PREFIX = "ad/";
 
 using namespace cryptonote;
 using namespace platform;
@@ -420,7 +420,7 @@ bool WalletState::sync_with_blockchain(api::cryptonoted::SyncMemPool::Response &
 		//		seria::from_binary(tx, resp.added_binary_transactions[i]);
 		std::vector<uint32_t> global_indices(tx.outputs.size(), 0);
 		Hash tid = resp.added_transactions.at(i).hash;  // get_transaction_hash(tx);
-+		if (!m_pool_hashes.insert(tid).second) {        // Already there
+		if (!m_pool_hashes.insert(tid).second) {        // Already there
 			continue;
 		}
 		PreparedWalletTransaction pwtx(std::move(tx), m_wallet.get_view_secret_key());
@@ -524,7 +524,7 @@ bool WalletState::redo_block(const api::BlockHeader &header, const PreparedWalle
 		delta_state.apply(this);
 	} catch (const std::exception &ex) {
 		std::cout << "Exception in delta_state.apply, probably out of disk space ex.what=" << ex.what() << std::endl;
-		std::exit(api::CRYPTONOTED_DATABASE_ERROR);
+		std::exit(api::DATABASE_ERROR);
 	}
 	return true;
 }
@@ -559,7 +559,7 @@ void WalletState::undo_block(Height height) {
 	} catch (const std::exception &ex) {
 		std::cout << "Exception in WalletState undo_block, probably out of disk space ex.what=" << ex.what()
 		          << std::endl;
-		std::exit(api::CRYPTONOTED_DATABASE_ERROR);
+		std::exit(api::DATABASE_ERROR);
 	}
 }
 

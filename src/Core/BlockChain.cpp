@@ -202,7 +202,7 @@ BroadcastAction BlockChain::add_block(const PreparedBlock &pb, api::BlockHeader 
 		std::cout << "Exception while reorganizing blockchain, probably out of "
 		             "disk space ex.what="
 		          << ex.what() << std::endl;
-		std::exit(api::CRYPTONOTED_DATABASE_ERROR);
+		std::exit(api::DATABASE_ERROR);
 	}
 	if (get_tip_height() % 50000 == 0)
 		db_commit();

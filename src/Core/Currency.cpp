@@ -95,6 +95,12 @@ Currency::Currency(bool is_testnet)
     , locked_tx_allowed_delta_blocks(parameters::CRYPTONOTE_LOCKED_TX_ALLOWED_DELTA_BLOCKS)
     , upgrade_height_v2(parameters::UPGRADE_HEIGHT_V2)
     , upgrade_height_v3(parameters::UPGRADE_HEIGHT_V3)
+    //, cryptonote_pt(parameters::POINT)
+    //, cryptonote_cn(parameters::COIN)
+    //, cryptonote_ico_start(parameters::START_BLOCK_REWARD)
+    //, cryptonote_ico_block(parameters::ICO_BLOCK_REWARD)
+    //, cryptonote_ico_max(parameters::MAX_BLOCK_REWARD)
+    //, cryptonote_ico_interval(parameters::REWARD_INCREASE_INTERVAL)
     , current_transaction_version(CURRENT_TRANSACTION_VERSION) {
 	if (is_testnet) {
 		upgrade_height_v2 = 0;

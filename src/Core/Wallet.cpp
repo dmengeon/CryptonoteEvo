@@ -53,7 +53,6 @@ size_t Wallet::wallet_file_size(size_t records) {
 	return 1 + sizeof(ContainerStoragePrefix) + sizeof(uint64_t) * 2 + sizeof(EncryptedWalletRecord) * records;
 }
 
-
 void Wallet::load_container_storage() {
 	uint8_t version = 0;
 	ContainerStoragePrefix prefix{};
@@ -386,7 +385,6 @@ bool Wallet::spend_keys_for_address(const AccountPublicAddress &addr, AccountKey
 
 bool Wallet::get_only_record(
     std::unordered_map<PublicKey, WalletRecord> &records, const AccountPublicAddress &addr) const {
-	std::unordered_map<PublicKey, WalletRecord> result;
 	auto rit = m_wallet_records.find(addr.spend_public_key);
 	if (rit == m_wallet_records.end() || rit->second.spend_public_key != addr.spend_public_key ||
 	    m_view_public_key != addr.view_public_key)

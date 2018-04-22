@@ -118,8 +118,8 @@ public:
 	const api::BlockHeader &get_tip() const { return m_tip; }
 
 	std::vector<Hash> get_sparse_chain() const;
-	bool sync_with_blockchain(api::bytecoind::SyncBlocks::Response &);   // We move from it
-	bool sync_with_blockchain(api::bytecoind::SyncMemPool::Response &);  // We move from it
+	bool sync_with_blockchain(api::cryptonoted::SyncBlocks::Response &);   // We move from it
+	bool sync_with_blockchain(api::cryptonoted::SyncMemPool::Response &);  // We move from it
 	void add_transient_transaction(const Hash &tid, const TransactionPrefix &tx);
 
 	bool parse_raw_transaction(api::Transaction &ptx, const TransactionPrefix &tx, Hash tid) const;

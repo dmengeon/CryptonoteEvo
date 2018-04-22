@@ -13,11 +13,11 @@
 namespace cryptonote {
 namespace json_rpc {
 
-const int PARSE_ERROR      = -32700;
-const int INVALID_REQUEST  = -32600;
+const int PARSE_ERROR     = -32700;
+const int INVALID_REQUEST = -32600;
 const int METHOD_NOT_FOUND = -32601;
-const int INVALID_PARAMS   = -32602;
-const int INTERNAL_ERROR   = -32603;
+const int INVALID_PARAMS  = -32602;
+const int INTERNAL_ERROR  = -32603;
 
 class Error : public std::exception {
 public:

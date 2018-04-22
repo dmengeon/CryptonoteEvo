@@ -18,7 +18,7 @@ namespace cryptonote {
 
 // a bit different commit periods to make most commits not simultaneous
 static const float DB_COMMIT_PERIOD_WALLET_CACHE = 290;  // 5 minutes sounds good compromise
-static const float DB_COMMIT_PERIOD_CRYPTONOTED    = 310;  // 5 minutes sounds good compromise
+static const float DB_COMMIT_PERIOD		 = 310;  // 5 minutes sounds good compromise
 static const float SYNC_TIMEOUT                  = 20;   // If sync does not return, select different sync node after
 static const int DOWNLOAD_CONCURRENCY            = 4;
 static const int DOWNLOAD_QUEUE                  = 10;  // number of block requests sent before receiving reply
@@ -97,7 +97,7 @@ protected:
 	std::unique_ptr<platform::PreventSleep> prevent_sleep;
 	void db_commit() {
 		m_block_chain.db_commit();
-		m_commit_timer.once(DB_COMMIT_PERIOD_CRYPTONOTED);
+		m_commit_timer.once(DB_COMMIT_PERIOD);
 	}
 
 	bool check_trust(const proof_of_trust &);
