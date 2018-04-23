@@ -54,6 +54,7 @@ This version is completed with new docker. Soon updates for travis.
 - GUI : https://github.com/Nur1Labs/CryptonoteEvo-GUI
 - Easy Miner : https://github.com/Nur1Labs/CryptonoteEvo-EasyMiner
 - Pool : https://github.com/Nur1Labs/CryptonoteEvo-Pool
+- V1 : https://github.com/Nur1Labs/oldrubychan
 
 
 ## Fundrising and Trademark
