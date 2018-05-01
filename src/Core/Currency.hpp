@@ -118,8 +118,9 @@ public:
 	static std::string format_amount(size_t number_of_decimal_places, SignedAmount);
 	static bool parse_amount(size_t number_of_decimal_places, const std::string &, Amount &);
 private:
+    bool generateGenesisBlock();
     uint64_t baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t height) const;
-	//ico, pos and token feature this you can remove or ignore by tag "//"
+    //ico, pos and token feature this you can remove or ignore by tag "//"
     static const std::vector<Amount> POWERS_OF_TEN;
 };
 
