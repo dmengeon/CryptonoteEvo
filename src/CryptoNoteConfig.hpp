@@ -104,12 +104,12 @@ const char P2P_STAT_TRUSTED_PUB_KEY[] = "E29507CA55455F37A3B783EE2C5123B8B6A34A0
 
 //This For Ico you can remove or not used it
 // COIN - number of smallest units in one coin
-//const uint64_t POINT                                         = 1000; // pow(10, 3)
-//const uint64_t COIN                                          = 1000000; // pow(10, 6)
-//const uint64_t START_BLOCK_REWARD                            = 100 * POINT;
-//const uint64_t ICO_BLOCK_REWARD	                             = 18446744073 * COIN; // 18.4 billion ICO
-//const uint64_t MAX_BLOCK_REWARD                              = 10 * COIN;
-//const uint64_t REWARD_INCREASE_INTERVAL			     = 264000;
+const uint64_t POINT                                         = 1000; // pow(10, 3)
+const uint64_t COIN                                          = 1000000; // pow(10, 6)
+const uint64_t START_BLOCK_REWARD                            = 100 * POINT;
+const uint64_t ICO_BLOCK_REWARD	                             = 18446744073 * COIN; // 18.4 billion ICO
+const uint64_t MAX_BLOCK_REWARD                              = 10 * COIN;
+const uint64_t REWARD_INCREASE_INTERVAL			     = 264000;
 
 const char *const SEED_NODES[] = {
     "10.0.2.15:8080"};

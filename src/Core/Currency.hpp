@@ -51,20 +51,20 @@ public:
 	uint64_t max_block_size_growth_speed_numerator;
 	uint64_t max_block_size_growth_speed_denominator;
 
-	//added ico setting
-	//uint64_t cryptonote_pt;
-	//uint64_t cryptonote_cn;
-	//uint64_t cryptonote_ico_start;
-	//uint64_t cryptonote_ico_block;
-	//uint64_t cryptonote_ico_max;
-	//uint64_t cryptonote_ico_interval;
-
 	Timestamp locked_tx_allowed_delta_seconds;
 	Height locked_tx_allowed_delta_blocks;
 
 	Height upgrade_height_v2;
 	Height upgrade_height_v3;
 	uint8_t get_block_major_version_for_height(Height) const;
+
+	//added ico setting
+	//uint64_t cryptonote_pt;
+	//uint64_t cryptonote_cn;
+	ICO cryptonote_ico_start;
+	ICO cryptonote_ico_block;
+	ICO cryptonote_ico_max;
+	ICO cryptonote_ico_interval;
 
 	uint8_t current_transaction_version;
 
@@ -118,8 +118,9 @@ public:
 	static std::string format_amount(size_t number_of_decimal_places, SignedAmount);
 	static bool parse_amount(size_t number_of_decimal_places, const std::string &, Amount &);
 private:
+    bool generateGenesisBlock();
     uint64_t baseRewardFunction(uint64_t alreadyGeneratedCoins, uint32_t height) const;
-	//ico, pos and token feature this you can remove or ignore by tag "//"
+    //ico, pos and token feature this you can remove or ignore by tag "//"
     static const std::vector<Amount> POWERS_OF_TEN;
 };
 
