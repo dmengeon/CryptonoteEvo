@@ -1,8 +1,5 @@
-# Copyright (c) 2012-2018, The CryptoNote developers, The Bytecoin developers, [ ] developers.
-# Licensed under the GNU Lesser General Public License. See LICENSE for details.
-
 cmake_minimum_required(VERSION 3.5)
-project(cryptonote) # change this for made own coin
+project(evonote) # change this for made own coin
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_C_STANDARD 11)
 # message(STATUS "Cryptonoted profile: According to cmake, sizeof(void *) == " ${CMAKE_SIZEOF_VOID_P})
@@ -131,9 +128,9 @@ include_directories(SYSTEM ../boost)
         link_directories(SYSTEM ../boost/stage32/lib) # must be before add_executable, add_library
     endif()
 endif()
-add_library(cryptonote-crypto ${SRC_CRYPTO})
-add_library(cryptonote-core ${SOURCE_FILES})
-target_link_libraries(cryptonote-core cryptonote-crypto)
+add_library(evonote-crypto ${SRC_CRYPTO})
+add_library(evonote-core ${SOURCE_FILES})
+target_link_libraries(evonote-core evonote-crypto)
 if(WIN32)
     add_executable(walletd src/main_walletd.cpp src/cryptonote.rc) # .rc works only if referenced directly in add_executable
     add_executable(cryptonoted src/main_cryptonoted.cpp src/cryptonote.rc) # .rc works only if referenced directly in add_executable + change this for made own coin
@@ -148,9 +145,9 @@ add_executable(tests src/main_tests.cpp tests/io.hpp
         tests/wallet_file/test_wallet_file.cpp tests/wallet_file/test_wallet_file.hpp)
 set(Boost_USE_STATIC_LIBS ON)
 add_definitions(-DBOOST_BIND_NO_PLACEHOLDERS=1 -DBOOST_CONFIG_SUPPRESS_OUTDATED_MESSAGE=1) # boost::_1 conflicts with std::_1
-target_link_libraries(walletd cryptonote-crypto cryptonote-core)
-target_link_libraries(cryptonoted cryptonote-crypto cryptonote-core) # change this for made own coin
-target_link_libraries(tests cryptonote-crypto cryptonote-core)
+target_link_libraries(walletd evonote-crypto evonote-core)
+target_link_libraries(cryptonoted evonote-crypto evonote-core) # change this for made own coin
+target_link_libraries(tests evonote-crypto evonote-core)
 if(WIN32)
 else()
     set(BOOST_ROOT ../boost)
