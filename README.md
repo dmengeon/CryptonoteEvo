@@ -7,6 +7,10 @@ Moving
 - Pool : https://github.com/Nur1Labs/CryptonoteEvo-Pool
 - V1 : https://github.com/Nur1Labs/oldrubychan
 
+## Dependencies
+- Modules : https://github.com/Nur1Labs/modules
+- Library : https://github.com/Nur1Labs/library
+
 
 ## Fundrising and Trademark
 - You can copy modify files without change original "cryptonote'
