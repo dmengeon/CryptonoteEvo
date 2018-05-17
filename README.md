@@ -20,5 +20,8 @@ Moving
 - This is open-source so no one claim tech we family
 - For personal contract this can do. For personal project not here. We help together
 
+# Donation Open
+Bitcoin : 1P5mz1ADA42z3hsi2tj9R1TWNynUfMBPxT
+Ethereum : 0xB48ba7d67e54653BdE03EC1d5A073537659f2b20
 
 ## [  ] Kohaku Team Developer && Cryptonote Family
