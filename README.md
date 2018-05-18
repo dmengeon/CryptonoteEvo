@@ -13,6 +13,8 @@ Moving
 - Modules : https://github.com/Nur1Labs/modules
 - Library : https://github.com/Nur1Labs/library
 
+Wiki : https://github.com/FndNur1Labs/CryptonoteEvo/wiki
+
 
 ## Fundrising and Trademark
 - You can copy modify files without change original "cryptonote'
@@ -22,6 +24,7 @@ Moving
 
 # Donation Open
 Bitcoin : 1P5mz1ADA42z3hsi2tj9R1TWNynUfMBPxT
+
 Ethereum : 0xB48ba7d67e54653BdE03EC1d5A073537659f2b20
 
 ## [  ] Kohaku Team Developer && Cryptonote Family
