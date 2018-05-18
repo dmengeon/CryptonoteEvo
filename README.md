@@ -5,6 +5,7 @@ Moving
 - GUI : https://github.com/Nur1Labs/CryptonoteEvo-GUI
 - Easy Miner : https://github.com/Nur1Labs/CryptonoteEvo-EasyMiner
 - Pool : https://github.com/Nur1Labs/CryptonoteEvo-Pool
+- Lite : https://github.com/Nur1Labs/CryptonoteEvo-Lite
 - V1 : https://github.com/Nur1Labs/oldrubychan
 
 > Forum : https://nur1labs.createaforum.com/
