@@ -1,15 +1,20 @@
 Moving
 
 ### Important Links
-- CLI : https://github.com/Nur1Labs/CryptonoteEvo-CLI
-- GUI : https://github.com/Nur1Labs/CryptonoteEvo-GUI
+- CLI[Powered by Karbowanec] : https://github.com/Nur1Labs/Catalyst-Cash
+- GUI[Powered by Karbowanec] : https://github.com/Nur1Labs/CatalystCash-GUI
 - Easy Miner : https://github.com/Nur1Labs/CryptonoteEvo-EasyMiner
 - Pool : https://github.com/Nur1Labs/CryptonoteEvo-Pool
 - Lite : https://github.com/Nur1Labs/CryptonoteEvo-Lite
 - V1 : https://github.com/Nur1Labs/oldrubychan
 
-### V3 on track you can try
-- V3 : https://github.com/Nur1Labs/CryptonoteEvoV3-CLI
+### Project cores for public discontinue for updates. 
+We apoligize for this we discontinue stable fork and platform. For now you can used karbowanec platform for CLI and GUI supports
+
+https://github.com/FndNur1Labs/CryptonoteEvo/wiki/Stable-Version-Stopped!
+
+### V3 on track you can try[Disable GUI and Support Super Nodes And CLI wallet]
+- V3 : https://github.com/Nur1Labs/LD
 
 Note : not produce for GUI yet we busy with cores
 
@@ -18,6 +23,8 @@ Note : not produce for GUI yet we busy with cores
 ## Dependencies
 - Modules : https://github.com/Nur1Labs/modules
 - Library : https://github.com/Nur1Labs/library
+- Class : https://github.com/Nur1Labs/class
+- Include : https://github.com/Nur1Labs/include
 
 ## Wiki 
 https://github.com/FndNur1Labs/CryptonoteEvo/wiki
